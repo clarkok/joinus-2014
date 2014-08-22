@@ -1,0 +1,485 @@
+$logo-size = 300px
+$item-size = 100px
+$item-circle-radius = 300px
+
+transition()
+  -webkit-transition arguments
+  -moz-transition arguments
+  transition arguments
+
+transition-delay()
+  -webkit-transition-delay arguments
+  -moz-transition-delay arguments
+  transition-delay arguments
+
+transition-property()
+  -webkit-transition-property arguments
+  -moz-transition-property arguments
+  transition-property arguments
+
+transition-duration()
+  -webkit-transition-duration arguments
+  -moz-transition-duration arguments
+  transition-duration arguments
+
+animation()
+  -webkit-animation arguments
+  -moz-animation arguments
+  animation arguments
+
+
+animation-delay()
+  -webkit-animation-delay arguments
+  -moz-animation-delay arguments
+  animation-delay arguments
+
+html, body
+  background-color #e7e7e7
+  margin 0
+  padding 0
+  width 100%
+  height 100%
+  overflow hidden
+  position relative
+
+.logo
+  height $logo-size
+  left 50%
+  margin-left -($logo-size / 2)
+  margin-top -($logo-size / 2)
+  position absolute
+  top 50%
+  width $logo-size
+
+  .logo-img
+    background-image url(imgs/logo.png)
+    background-position center
+    background-repeat no-repeat
+    background-size $logo-size $logo-size
+    height $logo-size
+    width $logo-size
+
+  .logo-txt
+    text-align center
+    font-size 24px
+    margin-top -24px
+    #Q
+      float left
+    #C
+      float right
+
+  &.dark
+    .logo-img
+      background-image url(imgs/logo-white.png)
+    .logo-txt
+      color white
+
+#wrapper
+  width 0
+  height 0
+  position absolute
+  top 50%
+  left 50%
+
+.item
+  width $item-size
+  height $item-size
+  border-radius ($item-size / 2)
+  position absolute
+  margin-top -($item-size / 2)
+  margin-left -($item-size / 2)
+  transition all 2s cubic-bezier(0.165, 0.84, 0.44, 1)
+  opacity 0
+
+  &.hover
+    .front
+      width $item-size
+      height $item-size
+      border-radius ($item-size / 2)
+    .background
+      width 5000px
+      height 5000px
+      margin-top -2500px
+      margin-left -2500px
+      border-radius 2500px
+      z-index 2
+
+  .background
+    position absolute
+    width $item-size
+    height $item-size
+    top 50%
+    left 50%
+    margin-left - ($item-size / 2)
+    margin-top - ($item-size / 2)
+    border-radius ($item-size / 2)
+    transition all 2s cubic-bezier(0.165, 0.84, 0.44, 1)
+    overflow hidden
+
+    .inside-logo
+      background-image url(imgs/logo.png)
+      background-repeat no-repeat
+      background-size $logo-size $logo-size
+      background-position center
+      position absolute
+      width $logo-size
+      height $logo-size
+      top 50%
+      left 50%
+
+    &.dark
+      .inside-logo
+        background-image url(imgs/logo-white.png)
+
+  .front
+    display block
+    color black
+    text-decoration none 
+    width $item-size
+    height $item-size
+    border-radius ($item-size / 2)
+    background-color white
+    position absolute
+    z-index 10
+    transition all .5s cubic-bezier(0.165, 0.84, 0.44, 1)
+    cursor pointer
+    .title
+      width 100%
+      span.line
+        display block
+        text-align center
+        font-size 16px
+        line-height 16px
+        height 16px
+      &.one-line
+        padding-top 42px
+      &.two-line
+        padding-top 34px
+    .intro
+      display none
+  &#hr
+    top - $item-circle-radius * 3
+    left 0
+    .background
+      background-color #ffea00
+      .inside-logo
+        margin-top $item-circle-radius - ($logo-size / 2)
+        margin-left - ($logo-size / 2)
+
+  &#photo
+    top - $item-circle-radius * 0.707 * 3
+    left $item-circle-radius * 0.707 * 3
+    .background
+      background-color #3d4c60
+      .inside-logo
+        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
+
+  &#news
+    top 0
+    left $item-circle-radius * 3
+    .background
+      background-color #5eaf69
+      .inside-logo
+        margin-top - ($logo-size / 2)
+        margin-left - $item-circle-radius - ($logo-size / 2)
+
+  &#video
+    top $item-circle-radius * 0.707 * 3
+    left $item-circle-radius * 0.707 * 3
+    .background
+      background-color #bae0f8
+      .inside-logo
+        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
+
+  &#outreach
+    top $item-circle-radius * 3
+    left 0
+    .background
+      background-color #fcf7d2
+      .inside-logo
+        margin-top - $item-circle-radius - ($logo-size / 2)
+        margin-left - ($logo-size / 2)
+
+  &#tide
+    top $item-circle-radius * 0.707 * 3
+    left - $item-circle-radius * 0.707 * 3
+    .background
+      background-color #639aab
+      .inside-logo
+        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
+
+  &#tech
+    top 0
+    left - $item-circle-radius * 3
+    .background
+      background-color #ca331b
+      .inside-logo
+        margin-top - ($logo-size / 2)
+        margin-left $item-circle-radius - ($logo-size / 2)
+
+  &#pm
+    top - $item-circle-radius * 0.707 * 3
+    left - $item-circle-radius * 0.707 * 3
+    .background
+      background-color #fe6100
+      .inside-logo
+        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
+
+body.ready
+  .item
+    opacity 1
+
+    &#hr
+      top - $item-circle-radius
+      left 0
+      transition-delay 0
+      .background
+        background-color #ffea00
+
+    &#photo
+      top - $item-circle-radius * 0.707
+      left $item-circle-radius * 0.707
+      transition-delay .3s
+      .background
+        background-color #3d4c60
+
+    &#news
+      top 0
+      left $item-circle-radius
+      transition-delay .6s
+      .background
+        background-color #5eaf69
+
+    &#video
+      top $item-circle-radius * 0.707
+      left $item-circle-radius * 0.707
+      transition-delay .1s
+      .background
+        background-color #bae0f8
+
+    &#outreach
+      top $item-circle-radius
+      left 0
+      transition-delay .4s
+      .background
+        background-color #fcf7d2
+
+    &#tide
+      top $item-circle-radius * 0.707
+      left - $item-circle-radius * 0.707
+      transition-delay .7s
+      .background
+        background-color #639aab
+
+    &#tech
+      top 0
+      left - $item-circle-radius
+      transition-delay .2s
+      .background
+        background-color #ca331b
+
+    &#pm
+      top - $item-circle-radius * 0.707
+      left - $item-circle-radius * 0.707
+      transition-delay .5s
+      .background
+        background-color #fe6100
+
+body.hr
+  .item#hr
+    top - $item-circle-radius
+    left 0
+    .background
+      display none
+      .inside-logo
+        margin-top $item-circle-radius - ($logo-size / 2)
+        margin-left - ($logo-size / 2)
+
+body.photo 
+  .item#photo 
+    top - $item-circle-radius * 0.707
+    left $item-circle-radius * 0.707
+    .background
+      display none
+      .inside-logo
+        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
+
+body.news 
+  .item#news
+    top 0
+    left $item-circle-radius
+    .background
+      display none
+      .inside-logo
+        margin-top - ($logo-size / 2)
+        margin-left - $item-circle-radius - ($logo-size / 2)
+
+body.video 
+  .item#video
+    top $item-circle-radius * 0.707
+    left $item-circle-radius * 0.707
+    .background
+      display none
+      .inside-logo
+        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
+
+body.outreach 
+  .item#outreach
+    top $item-circle-radius
+    left 0
+    .background
+      display none
+      .inside-logo
+        margin-top - $item-circle-radius - ($logo-size / 2)
+        margin-left - ($logo-size / 2)
+
+body.tide 
+  .item#tide
+    top $item-circle-radius * 0.707
+    left - $item-circle-radius * 0.707
+    .background
+      display none
+      .inside-logo
+        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
+
+body.tech 
+  .item#tech
+    top 0
+    left - $item-circle-radius
+    .background
+      display none
+      .inside-logo
+        margin-top - ($logo-size / 2)
+        margin-left $item-circle-radius - ($logo-size / 2)
+
+body.pm 
+  .item#pm
+    top - $item-circle-radius * 0.707
+    left - $item-circle-radius * 0.707
+    .background
+      display none
+      .inside-logo
+        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
+        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
+
+.detail-wrapper
+  position fixed
+  height 0
+  width 100%
+  top 0
+  left 0
+  overflow hidden
+  background-color transparent
+  transition-property background-color, height
+  transition-delay 0, 1s
+  transition-duration 1s, 0
+
+  .detail
+    position absolute
+    width 0
+    height 0
+    margin-top 0
+    margin-left 0
+    border-radius 5000px
+    top 50%
+    left -10%
+    background-color white
+    transition all 1s
+    
+    .txt-wrapper
+      position fixed
+      height 100%
+      width 30%
+      line-height 100vh
+      top 0
+      left -30%
+      transition left .5s ease-out 0
+
+      .txt-aligner
+        line-height 1.5em
+        display inline-block
+        padding-left 2em
+        vertical-align middle
+
+  .department-logo
+    width 60%
+    height 100%
+    right -60%
+    top 0
+    position fixed
+    background-repeat no-repeat
+    background-position center center
+    background-size 400px auto
+    transition right .5s ease-out 0
+
+  &:target
+    height 100%
+    transition-property background-color, height
+    transition-delay 0
+    transition-duration 1s, 0
+    .detail
+      width 100vw
+      height 100vw
+      margin-left -50vw
+      margin-top -50vw
+      .txt-wrapper
+        transition left .5s ease-out .5s
+        left 0
+    .department-logo
+      right 0
+      transition right .5s ease-out .5s
+
+  &#detail-hr
+    &:target
+      background-color #ffea00
+    .department-logo
+      background-image url(imgs/hr.png)
+
+  &#detail-photo
+    &:target
+      background-color #3d4c60
+    .department-logo
+      background-image url(imgs/photo.png)
+
+  &#detail-news
+    &:target
+      background-color #5eaf69
+    .department-logo
+      background-image url(imgs/news.png)
+
+  &#detail-video
+    &:target
+      background-color #bae0f8
+    .department-logo
+      background-image url(imgs/video.png)
+
+  &#detail-outreach
+    &:target
+      background-color #fcf7d2
+    .department-logo
+      background-image url(imgs/outreach.png)
+
+  &#detail-tide
+    &:target
+      background-color #639aab
+    .department-logo
+      background-image url(imgs/tide.png)
+
+  &#detail-tech
+    &:target
+      background-color #ca331b
+    .department-logo
+      background-image url(imgs/tech.png)
+
+  &#detail-pm
+    &:target
+      background-color #fe6100
+    .department-logo
+      background-image url(imgs/pm.png)
