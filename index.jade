@@ -4,6 +4,7 @@ html(lang="zh")
     meta(charset="utf-8")
     link(rel="stylesheet", href="style.css")
   body
+    canvas#background
     .logo
       .logo-img
       .logo-txt
@@ -12,56 +13,40 @@ html(lang="zh")
         span#C C
 
     #wrapper
-      .item#hr
-        .background
-          .inside-logo
+      .item#hr(data-color="#ffea00")
         a(href="#detail-hr").front
           .title.two-line
             span.line 人力资源
             span.line 部门
-      .item#photo
-        .background.dark
-          .inside-logo
+      .item#photo(data-color="#3d4c60")
         a(href="#detail-photo").front
           .title.one-line
             span.line 摄影部
-      .item#news
-        .background
-          .inside-logo
+      .item#news(data-color="#5eaf69")
         a(href="#detail-news").front
           .title.two-line
             span.line 新闻资讯
             span.line 中心
-      .item#video
-        .background
-          .inside-logo
+      .item#video(data-color="#bae0f8")
         a(href="#detail-video").front
           .title.one-line
             span.line 视频团队
-      .item#outreach
-        .background
-          .inside-logo
+      .item#outreach(data-color="#fcf7d2")
         a(href="#detail-outreach").front
           .title.two-line
             span.line 推广策划
             span.line 中心
-      .item#tide
-        .background
-          .inside-logo
+      .item#tide(data-color="#639aab")
         a(href="#detail-tide").front
           .title.two-line 
             span.line 水朝夕
             span.line 工作室
-      .item#tech
-        .background.dark
-          .inside-logo
+      .item#tech(data-color="#ca331b")
         a(href="#detail-tech").front
           .title.two-line
             span.line 技术研发
             span.line 中心
-      .item#pm
-        .background.dark
-          .inside-logo
+      .item#pm(data-color="#fe6100")
         a(href="#detail-pm").front
           .title.two-line
             span.line 产品运营

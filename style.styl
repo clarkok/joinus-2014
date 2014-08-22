@@ -42,6 +42,10 @@ html, body
   overflow hidden
   position relative
 
+#background
+  width 100%
+  height 100%
+
 .logo
   height $logo-size
   left 50%
@@ -91,46 +95,6 @@ html, body
   transition all 2s cubic-bezier(0.165, 0.84, 0.44, 1)
   opacity 0
 
-  &.hover
-    .front
-      width $item-size
-      height $item-size
-      border-radius ($item-size / 2)
-    .background
-      width 5000px
-      height 5000px
-      margin-top -2500px
-      margin-left -2500px
-      border-radius 2500px
-      z-index 2
-
-  .background
-    position absolute
-    width $item-size
-    height $item-size
-    top 50%
-    left 50%
-    margin-left - ($item-size / 2)
-    margin-top - ($item-size / 2)
-    border-radius ($item-size / 2)
-    transition all 2s cubic-bezier(0.165, 0.84, 0.44, 1)
-    overflow hidden
-
-    .inside-logo
-      background-image url(imgs/logo.png)
-      background-repeat no-repeat
-      background-size $logo-size $logo-size
-      background-position center
-      position absolute
-      width $logo-size
-      height $logo-size
-      top 50%
-      left 50%
-
-    &.dark
-      .inside-logo
-        background-image url(imgs/logo-white.png)
-
   .front
     display block
     color black
@@ -160,74 +124,34 @@ html, body
   &#hr
     top - $item-circle-radius * 3
     left 0
-    .background
-      background-color #ffea00
-      .inside-logo
-        margin-top $item-circle-radius - ($logo-size / 2)
-        margin-left - ($logo-size / 2)
 
   &#photo
     top - $item-circle-radius * 0.707 * 3
     left $item-circle-radius * 0.707 * 3
-    .background
-      background-color #3d4c60
-      .inside-logo
-        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
 
   &#news
     top 0
     left $item-circle-radius * 3
-    .background
-      background-color #5eaf69
-      .inside-logo
-        margin-top - ($logo-size / 2)
-        margin-left - $item-circle-radius - ($logo-size / 2)
 
   &#video
     top $item-circle-radius * 0.707 * 3
     left $item-circle-radius * 0.707 * 3
-    .background
-      background-color #bae0f8
-      .inside-logo
-        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
 
   &#outreach
     top $item-circle-radius * 3
     left 0
-    .background
-      background-color #fcf7d2
-      .inside-logo
-        margin-top - $item-circle-radius - ($logo-size / 2)
-        margin-left - ($logo-size / 2)
 
   &#tide
     top $item-circle-radius * 0.707 * 3
     left - $item-circle-radius * 0.707 * 3
-    .background
-      background-color #639aab
-      .inside-logo
-        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
 
   &#tech
     top 0
     left - $item-circle-radius * 3
-    .background
-      background-color #ca331b
-      .inside-logo
-        margin-top - ($logo-size / 2)
-        margin-left $item-circle-radius - ($logo-size / 2)
 
   &#pm
     top - $item-circle-radius * 0.707 * 3
     left - $item-circle-radius * 0.707 * 3
-    .background
-      background-color #fe6100
-      .inside-logo
-        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
 
 body.ready
   .item
@@ -237,137 +161,81 @@ body.ready
       top - $item-circle-radius
       left 0
       transition-delay 0
-      .background
-        background-color #ffea00
 
     &#photo
       top - $item-circle-radius * 0.707
       left $item-circle-radius * 0.707
       transition-delay .3s
-      .background
-        background-color #3d4c60
 
     &#news
       top 0
       left $item-circle-radius
       transition-delay .6s
-      .background
-        background-color #5eaf69
 
     &#video
       top $item-circle-radius * 0.707
       left $item-circle-radius * 0.707
       transition-delay .1s
-      .background
-        background-color #bae0f8
 
     &#outreach
       top $item-circle-radius
       left 0
       transition-delay .4s
-      .background
-        background-color #fcf7d2
 
     &#tide
       top $item-circle-radius * 0.707
       left - $item-circle-radius * 0.707
       transition-delay .7s
-      .background
-        background-color #639aab
 
     &#tech
       top 0
       left - $item-circle-radius
       transition-delay .2s
-      .background
-        background-color #ca331b
 
     &#pm
       top - $item-circle-radius * 0.707
       left - $item-circle-radius * 0.707
       transition-delay .5s
-      .background
-        background-color #fe6100
 
 body.hr
   .item#hr
     top - $item-circle-radius
     left 0
-    .background
-      display none
-      .inside-logo
-        margin-top $item-circle-radius - ($logo-size / 2)
-        margin-left - ($logo-size / 2)
 
 body.photo 
   .item#photo 
     top - $item-circle-radius * 0.707
     left $item-circle-radius * 0.707
-    .background
-      display none
-      .inside-logo
-        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
 
 body.news 
   .item#news
     top 0
     left $item-circle-radius
-    .background
-      display none
-      .inside-logo
-        margin-top - ($logo-size / 2)
-        margin-left - $item-circle-radius - ($logo-size / 2)
 
 body.video 
   .item#video
     top $item-circle-radius * 0.707
     left $item-circle-radius * 0.707
-    .background
-      display none
-      .inside-logo
-        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left - $item-circle-radius * 0.707 - ($logo-size / 2)
 
 body.outreach 
   .item#outreach
     top $item-circle-radius
     left 0
-    .background
-      display none
-      .inside-logo
-        margin-top - $item-circle-radius - ($logo-size / 2)
-        margin-left - ($logo-size / 2)
 
 body.tide 
   .item#tide
     top $item-circle-radius * 0.707
     left - $item-circle-radius * 0.707
-    .background
-      display none
-      .inside-logo
-        margin-top - $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
 
 body.tech 
   .item#tech
     top 0
     left - $item-circle-radius
-    .background
-      display none
-      .inside-logo
-        margin-top - ($logo-size / 2)
-        margin-left $item-circle-radius - ($logo-size / 2)
 
 body.pm 
   .item#pm
     top - $item-circle-radius * 0.707
     left - $item-circle-radius * 0.707
-    .background
-      display none
-      .inside-logo
-        margin-top $item-circle-radius * 0.707 - ($logo-size / 2)
-        margin-left $item-circle-radius * 0.707 - ($logo-size / 2)
 
 .detail-wrapper
   position fixed

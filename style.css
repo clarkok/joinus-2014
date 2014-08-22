@@ -8,6 +8,10 @@ body {
   overflow: hidden;
   position: relative;
 }
+#background {
+  width: 100%;
+  height: 100%;
+}
 .logo {
   height: 300px;
   left: 50%;
@@ -61,47 +65,6 @@ body {
   transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
   opacity: 0;
 }
-.item.hover .front {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-}
-.item.hover .background {
-  width: 5000px;
-  height: 5000px;
-  margin-top: -2500px;
-  margin-left: -2500px;
-  border-radius: 2500px;
-  z-index: 2;
-}
-.item .background {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top: 50%;
-  left: 50%;
-  margin-left: -50px;
-  margin-top: -50px;
-  border-radius: 50px;
-  -webkit-transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-  -moz-transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-  overflow: hidden;
-}
-.item .background .inside-logo {
-  background-image: url("imgs/logo.png");
-  background-repeat: no-repeat;
-  background-size: 300px 300px;
-  background-position: center;
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  top: 50%;
-  left: 50%;
-}
-.item .background.dark .inside-logo {
-  background-image: url("imgs/logo-white.png");
-}
 .item .front {
   display: block;
   color: #000;
@@ -140,89 +103,33 @@ body {
   top: -900px;
   left: 0;
 }
-.item#hr .background {
-  background-color: #ffea00;
-}
-.item#hr .background .inside-logo {
-  margin-top: 150px;
-  margin-left: -150px;
-}
 .item#photo {
   top: -636.3px;
   left: 636.3px;
-}
-.item#photo .background {
-  background-color: #3d4c60;
-}
-.item#photo .background .inside-logo {
-  margin-top: 62.099999999999994px;
-  margin-left: -362.1px;
 }
 .item#news {
   top: 0;
   left: 900px;
 }
-.item#news .background {
-  background-color: #5eaf69;
-}
-.item#news .background .inside-logo {
-  margin-top: -150px;
-  margin-left: -450px;
-}
 .item#video {
   top: 636.3px;
   left: 636.3px;
-}
-.item#video .background {
-  background-color: #bae0f8;
-}
-.item#video .background .inside-logo {
-  margin-top: -362.1px;
-  margin-left: -362.1px;
 }
 .item#outreach {
   top: 900px;
   left: 0;
 }
-.item#outreach .background {
-  background-color: #fcf7d2;
-}
-.item#outreach .background .inside-logo {
-  margin-top: -450px;
-  margin-left: -150px;
-}
 .item#tide {
   top: 636.3px;
   left: -636.3px;
-}
-.item#tide .background {
-  background-color: #639aab;
-}
-.item#tide .background .inside-logo {
-  margin-top: -362.1px;
-  margin-left: 62.099999999999994px;
 }
 .item#tech {
   top: 0;
   left: -900px;
 }
-.item#tech .background {
-  background-color: #ca331b;
-}
-.item#tech .background .inside-logo {
-  margin-top: -150px;
-  margin-left: 150px;
-}
 .item#pm {
   top: -636.3px;
   left: -636.3px;
-}
-.item#pm .background {
-  background-color: #fe6100;
-}
-.item#pm .background .inside-logo {
-  margin-top: 62.099999999999994px;
-  margin-left: 62.099999999999994px;
 }
 body.ready .item {
   opacity: 1;
@@ -234,18 +141,12 @@ body.ready .item#hr {
   -moz-transition-delay: 0;
   transition-delay: 0;
 }
-body.ready .item#hr .background {
-  background-color: #ffea00;
-}
 body.ready .item#photo {
   top: -212.1px;
   left: 212.1px;
   -webkit-transition-delay: 0.3s;
   -moz-transition-delay: 0.3s;
   transition-delay: 0.3s;
-}
-body.ready .item#photo .background {
-  background-color: #3d4c60;
 }
 body.ready .item#news {
   top: 0;
@@ -254,18 +155,12 @@ body.ready .item#news {
   -moz-transition-delay: 0.6s;
   transition-delay: 0.6s;
 }
-body.ready .item#news .background {
-  background-color: #5eaf69;
-}
 body.ready .item#video {
   top: 212.1px;
   left: 212.1px;
   -webkit-transition-delay: 0.1s;
   -moz-transition-delay: 0.1s;
   transition-delay: 0.1s;
-}
-body.ready .item#video .background {
-  background-color: #bae0f8;
 }
 body.ready .item#outreach {
   top: 300px;
@@ -274,18 +169,12 @@ body.ready .item#outreach {
   -moz-transition-delay: 0.4s;
   transition-delay: 0.4s;
 }
-body.ready .item#outreach .background {
-  background-color: #fcf7d2;
-}
 body.ready .item#tide {
   top: 212.1px;
   left: -212.1px;
   -webkit-transition-delay: 0.7s;
   -moz-transition-delay: 0.7s;
   transition-delay: 0.7s;
-}
-body.ready .item#tide .background {
-  background-color: #639aab;
 }
 body.ready .item#tech {
   top: 0;
@@ -294,9 +183,6 @@ body.ready .item#tech {
   -moz-transition-delay: 0.2s;
   transition-delay: 0.2s;
 }
-body.ready .item#tech .background {
-  background-color: #ca331b;
-}
 body.ready .item#pm {
   top: -212.1px;
   left: -212.1px;
@@ -304,96 +190,37 @@ body.ready .item#pm {
   -moz-transition-delay: 0.5s;
   transition-delay: 0.5s;
 }
-body.ready .item#pm .background {
-  background-color: #fe6100;
-}
 body.hr .item#hr {
   top: -300px;
   left: 0;
-}
-body.hr .item#hr .background {
-  display: none;
-}
-body.hr .item#hr .background .inside-logo {
-  margin-top: 150px;
-  margin-left: -150px;
 }
 body.photo .item#photo {
   top: -212.1px;
   left: 212.1px;
 }
-body.photo .item#photo .background {
-  display: none;
-}
-body.photo .item#photo .background .inside-logo {
-  margin-top: 62.099999999999994px;
-  margin-left: -362.1px;
-}
 body.news .item#news {
   top: 0;
   left: 300px;
-}
-body.news .item#news .background {
-  display: none;
-}
-body.news .item#news .background .inside-logo {
-  margin-top: -150px;
-  margin-left: -450px;
 }
 body.video .item#video {
   top: 212.1px;
   left: 212.1px;
 }
-body.video .item#video .background {
-  display: none;
-}
-body.video .item#video .background .inside-logo {
-  margin-top: -362.1px;
-  margin-left: -362.1px;
-}
 body.outreach .item#outreach {
   top: 300px;
   left: 0;
-}
-body.outreach .item#outreach .background {
-  display: none;
-}
-body.outreach .item#outreach .background .inside-logo {
-  margin-top: -450px;
-  margin-left: -150px;
 }
 body.tide .item#tide {
   top: 212.1px;
   left: -212.1px;
 }
-body.tide .item#tide .background {
-  display: none;
-}
-body.tide .item#tide .background .inside-logo {
-  margin-top: -362.1px;
-  margin-left: 62.099999999999994px;
-}
 body.tech .item#tech {
   top: 0;
   left: -300px;
 }
-body.tech .item#tech .background {
-  display: none;
-}
-body.tech .item#tech .background .inside-logo {
-  margin-top: -150px;
-  margin-left: 150px;
-}
 body.pm .item#pm {
   top: -212.1px;
   left: -212.1px;
-}
-body.pm .item#pm .background {
-  display: none;
-}
-body.pm .item#pm .background .inside-logo {
-  margin-top: 62.099999999999994px;
-  margin-left: 62.099999999999994px;
 }
 .detail-wrapper {
   position: fixed;
