@@ -22,16 +22,25 @@ transition-duration()
   -moz-transition-duration arguments
   transition-duration arguments
 
+transition-timing-function()
+  -webkit-transition-timing-function arguments
+  -moz-transition-timing-function arguments
+  transition-timing-function arguments
+
 animation()
   -webkit-animation arguments
   -moz-animation arguments
   animation arguments
 
-
 animation-delay()
   -webkit-animation-delay arguments
   -moz-animation-delay arguments
   animation-delay arguments
+
+box-sizing()
+  -webkit-box-sizing arguments
+  -moz-box-sizing arguments
+  box-sizing arguments
 
 html, body
   background-color #e7e7e7
@@ -41,12 +50,61 @@ html, body
   height 100%
   overflow hidden
   position relative
+  font-family "Microsoft YaHei UI", "Microsoft YaHei", "Hiragino Sans GB", " WenQuanYi Micro Hei"
 
 #background
   width 100%
   height 100%
+  opacity 1
+  transition opacity .5s
+
+$joinus-scale = 0.8
+
+body.joinus
+  #background
+    opacity 0
+  #wrapper
+    left 30%
+
+  .item
+    opacity 1
+    transition-delay 0!important
+
+    &#hr
+      top - $item-circle-radius * $joinus-scale
+      left 0
+
+    &#photo
+      top - $item-circle-radius * 0.707 * $joinus-scale
+      left $item-circle-radius * 0.707 * $joinus-scale
+
+    &#news
+      top 0
+      left $item-circle-radius * $joinus-scale
+
+    &#video
+      top $item-circle-radius * 0.707 * $joinus-scale
+      left $item-circle-radius * 0.707 * $joinus-scale
+
+    &#outreach
+      top $item-circle-radius * $joinus-scale
+      left 0
+
+    &#tide
+      top $item-circle-radius * 0.707 * $joinus-scale
+      left - $item-circle-radius * 0.707 * $joinus-scale
+
+    &#tech
+      top 0
+      left - $item-circle-radius * $joinus-scale
+
+    &#pm
+      top - $item-circle-radius * 0.707 * $joinus-scale
+      left - $item-circle-radius * 0.707 * $joinus-scale
 
 .logo
+  outline 0
+  display block
   height $logo-size
   left 50%
   margin-left -($logo-size / 2)
@@ -54,6 +112,7 @@ html, body
   position absolute
   top 50%
   width $logo-size
+  text-decoration none
 
   .logo-img
     background-image url(imgs/logo.png)
@@ -67,10 +126,17 @@ html, body
     text-align center
     font-size 24px
     margin-top -24px
-    #Q
-      float left
-    #C
-      float right
+    letter-spacing -.5em
+    text-indent -.5em
+    transition all 1s
+    opacity 0
+    color black
+    text-decoration none
+  &:hover
+    .logo-txt
+      text-indent 1em
+      letter-spacing 1em
+      opacity 1
 
   &.dark
     .logo-img
@@ -84,6 +150,7 @@ html, body
   position absolute
   top 50%
   left 50%
+  transition all .5s
 
 .item
   width $item-size
@@ -246,8 +313,26 @@ body.pm
   overflow hidden
   background-color transparent
   transition-property background-color, height
-  transition-delay 0, 1s
-  transition-duration 1s, 0
+  transition-delay 0s, 1s
+  transition-duration 1s, 0s
+  transition-timing-function cubic-bezier(0.165, 0.84, 0.44, 1)
+
+  .background-slider
+    position absolute
+    width 100%
+    height 100%
+    top 0
+    left 0
+    background-color black
+    background-repeat no-repeat
+    transition-property opacity, background-position, background-size
+    transition-timing-function cubic-bezier(0.645, 0.045, 0.355, 1)
+    transition-duration .5s, 4s, 4s
+    opacity 0
+
+    &.hide
+      display none
+      transition-duration 0
 
   .detail
     position absolute
@@ -259,7 +344,44 @@ body.pm
     top 50%
     left -10%
     background-color white
-    transition all 1s
+    transition all 1s ease .2s
+
+    .back
+      height 100px
+      width 50px
+      font-size 48px
+      line-height 100px
+      position absolute
+      top 50%
+      margin-top -50px
+      right 1em
+      z-index 25
+      color black
+      text-decoration none
+
+    .nav
+      position fixed
+      width 30%
+      top 2em
+      left -30%
+      transition left .5s ease-in 0s
+      z-index 25
+      a
+        text-decoration none
+        color black
+
+      .prev
+        margin-left 2em
+        &:before
+          content "<"
+          margin-right .5em
+          font-weight 700
+      .next
+        float right
+        &:after
+          content ">"
+          margin-left .5em
+          font-weight 700
     
     .txt-wrapper
       position fixed
@@ -268,13 +390,25 @@ body.pm
       line-height 100vh
       top 0
       left -30%
-      transition left .5s ease-out 0
+      transition left .5s ease-in 0s
 
       .txt-aligner
         line-height 1.5em
         display inline-block
         padding-left 2em
         vertical-align middle
+        p
+          text-indent 2em
+
+    .join
+      display block
+      height 2em
+      line-height 2em
+      border-radius 2em
+      border 2px solid black
+      color black
+      text-decoration none
+      text-align center
 
   .department-logo
     width 60%
@@ -285,24 +419,25 @@ body.pm
     background-repeat no-repeat
     background-position center center
     background-size 400px auto
-    transition right .5s ease-out 0
+    transition right .5s cubic-bezier(0.895, 0.03, 0.685, 0.22) 0s
 
   &:target
     height 100%
     transition-property background-color, height
-    transition-delay 0
-    transition-duration 1s, 0
+    transition-delay 0s
+    transition-duration 2s, 0s
     .detail
       width 100vw
       height 100vw
       margin-left -50vw
       margin-top -50vw
-      .txt-wrapper
-        transition left .5s ease-out .5s
+      transition all 1s
+      .txt-wrapper, .nav
+        transition left .5s cubic-bezier(0.165, 0.84, 0.44, 1) .5s
         left 0
     .department-logo
       right 0
-      transition right .5s ease-out .5s
+      transition right .5s cubic-bezier(0.165, 0.84, 0.44, 1) .5s
 
   &#detail-hr
     &:target
@@ -351,3 +486,173 @@ body.pm
       background-color #fe6100
     .department-logo
       background-image url(imgs/pm.png)
+
+#joinus
+  .line
+    display block
+    &:after
+      content ""
+      clear both
+      display inline-block
+      float left
+    .input
+      margin-bottom 1em
+      display inline-block
+      float left
+      position relative
+      height 2em
+      margin-right 2em
+      &.input-text
+        border-bottom 2px solid black
+        label
+          cursor text
+          position absolute
+          top .1em
+          left .1em
+          color gray
+          font-size 1em
+          transition all .5s
+        &.focus label
+          font-size .6em
+          top -1.5em
+          color black
+
+        input
+          display block
+          box-sizing border-box
+          background-color transparent
+          font-size 1em
+          padding .2em
+          outline 0
+          border 0
+      &.input-select
+        cursor pointer
+        height 2em
+        &:after
+          content ""
+          width 0
+          height 0
+          border-color black transparent transparent transparent
+          border-width 5px
+          border-style solid
+          position absolute
+          right 1em
+          top 1em
+          z-index 5
+        .choses
+          box-sizing border-box
+          border 2px solid black
+          width 100%
+          list-style none
+          display block
+          margin 0
+          padding 0
+          position absolute
+          z-index 2
+          background-color white
+          .option
+            display block
+            height 0
+            line-height 2em
+            padding-left .5em
+            overflow hidden
+            transition all .3s
+            &.checked
+              height 2em
+        &.focus
+          z-index 10
+          .choses .option
+            height 2em
+            &:hover
+              background-color #eee
+      &.input-textarea
+        overflow hidden
+        height auto
+        padding .1em 0
+        .prompt
+          width 18em
+        textarea
+          display inline-block
+          float left
+          width 18em
+          font-size 1em
+          box-sizing border-box
+          border-width 2px
+          border-style solid
+          border-top-color black
+          border-bottom-color black
+          border-left-color transparent
+          border-right-color transparent
+          padding .5em
+          min-height 5em
+      &.input-file
+        .prompt
+          width 18em
+
+#joinus
+  position absolute
+  width 100%
+  height 0
+  top 0
+  left 0
+  transition height 0s ease 1s
+
+  #joinus-wrapper
+    display block
+    position absolute
+    top 50%
+    right -10%
+    width 0
+    height 0
+    margin-top 0
+    margin-right 0
+    border-radius 0
+    transition all 1s ease .2s
+    .back
+      height 100px
+      width 50px
+      font-size 48px
+      line-height 100px
+      position absolute
+      top 50%
+      margin-top -50px
+      left 1em
+      z-index 25
+      color black
+      text-decoration none
+    #joinus-positioner
+      position fixed
+      height 100%
+      line-height 100vh
+      width 24em
+      right -30%
+      top 0
+      transition right .5s ease-in 0s
+      overflow-y auto
+      overflow-x hidden
+      padding-left .3em
+      #joinus-aligner
+        display inline-block
+        vertical-align middle
+        line-height 1.5em
+  #input-name, #input-gender, #input-long, #input-short, #input-class, #input-grade
+    width 8em
+
+  #input-email, #input-id, #input-first-chose, #input-second-chose
+    width 18em
+
+  &:target
+    height 100%
+    transition height 0s ease 0s
+
+    #joinus-wrapper
+      width 100vw
+      height 100vw
+      margin-right -50vw
+      margin-top -50vw
+      border-radius 50vw
+      background-color white
+      transition all 1s
+      #joinus-positioner
+        transition right .5s cubic-bezier(0.165, 0.84, 0.44, 1) .5s
+        right 0

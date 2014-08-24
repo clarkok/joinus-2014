@@ -7,12 +7,63 @@ body {
   height: 100%;
   overflow: hidden;
   position: relative;
+  font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Hiragino Sans GB", " WenQuanYi Micro Hei";
 }
 #background {
   width: 100%;
   height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+body.joinus #background {
+  opacity: 0;
+}
+body.joinus #wrapper {
+  left: 30%;
+}
+body.joinus .item {
+  opacity: 1;
+  -webkit-transition-delay: 0 !important;
+  -moz-transition-delay: 0 !important;
+  transition-delay: 0 !important;
+}
+body.joinus .item#hr {
+  top: -240px;
+  left: 0;
+}
+body.joinus .item#photo {
+  top: -169.68px;
+  left: 169.68px;
+}
+body.joinus .item#news {
+  top: 0;
+  left: 240px;
+}
+body.joinus .item#video {
+  top: 169.68px;
+  left: 169.68px;
+}
+body.joinus .item#outreach {
+  top: 240px;
+  left: 0;
+}
+body.joinus .item#tide {
+  top: 169.68px;
+  left: -169.68px;
+}
+body.joinus .item#tech {
+  top: 0;
+  left: -240px;
+}
+body.joinus .item#pm {
+  top: -169.68px;
+  left: -169.68px;
 }
 .logo {
+  outline: 0;
+  display: block;
   height: 300px;
   left: 50%;
   margin-left: -150px;
@@ -20,6 +71,7 @@ body {
   position: absolute;
   top: 50%;
   width: 300px;
+  text-decoration: none;
 }
 .logo .logo-img {
   background-image: url("imgs/logo.png");
@@ -33,12 +85,19 @@ body {
   text-align: center;
   font-size: 24px;
   margin-top: -24px;
+  letter-spacing: -0.5em;
+  text-indent: -0.5em;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+  opacity: 0;
+  color: #000;
+  text-decoration: none;
 }
-.logo .logo-txt #Q {
-  float: left;
-}
-.logo .logo-txt #C {
-  float: right;
+.logo:hover .logo-txt {
+  text-indent: 1em;
+  letter-spacing: 1em;
+  opacity: 1;
 }
 .logo.dark .logo-img {
   background-image: url("imgs/logo-white.png");
@@ -52,6 +111,9 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .item {
   width: 100px;
@@ -233,12 +295,40 @@ body.pm .item#pm {
   -webkit-transition-property: background-color, height;
   -moz-transition-property: background-color, height;
   transition-property: background-color, height;
-  -webkit-transition-delay: 0, 1s;
-  -moz-transition-delay: 0, 1s;
-  transition-delay: 0, 1s;
-  -webkit-transition-duration: 1s, 0;
-  -moz-transition-duration: 1s, 0;
-  transition-duration: 1s, 0;
+  -webkit-transition-delay: 0s, 1s;
+  -moz-transition-delay: 0s, 1s;
+  transition-delay: 0s, 1s;
+  -webkit-transition-duration: 1s, 0s;
+  -moz-transition-duration: 1s, 0s;
+  transition-duration: 1s, 0s;
+  -webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.detail-wrapper .background-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  background-repeat: no-repeat;
+  -webkit-transition-property: opacity, background-position, background-size;
+  -moz-transition-property: opacity, background-position, background-size;
+  transition-property: opacity, background-position, background-size;
+  -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition-duration: 0.5s, 4s, 4s;
+  -moz-transition-duration: 0.5s, 4s, 4s;
+  transition-duration: 0.5s, 4s, 4s;
+  opacity: 0;
+}
+.detail-wrapper .background-slider.hide {
+  display: none;
+  -webkit-transition-duration: 0;
+  -moz-transition-duration: 0;
+  transition-duration: 0;
 }
 .detail-wrapper .detail {
   position: absolute;
@@ -250,9 +340,52 @@ body.pm .item#pm {
   top: 50%;
   left: -10%;
   background-color: #fff;
-  -webkit-transition: all 1s;
-  -moz-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition: all 1s ease 0.2s;
+  -moz-transition: all 1s ease 0.2s;
+  transition: all 1s ease 0.2s;
+}
+.detail-wrapper .detail .back {
+  height: 100px;
+  width: 50px;
+  font-size: 48px;
+  line-height: 100px;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  right: 1em;
+  z-index: 25;
+  color: #000;
+  text-decoration: none;
+}
+.detail-wrapper .detail .nav {
+  position: fixed;
+  width: 30%;
+  top: 2em;
+  left: -30%;
+  -webkit-transition: left 0.5s ease-in 0s;
+  -moz-transition: left 0.5s ease-in 0s;
+  transition: left 0.5s ease-in 0s;
+  z-index: 25;
+}
+.detail-wrapper .detail .nav a {
+  text-decoration: none;
+  color: #000;
+}
+.detail-wrapper .detail .nav .prev {
+  margin-left: 2em;
+}
+.detail-wrapper .detail .nav .prev:before {
+  content: "<";
+  margin-right: 0.5em;
+  font-weight: 700;
+}
+.detail-wrapper .detail .nav .next {
+  float: right;
+}
+.detail-wrapper .detail .nav .next:after {
+  content: ">";
+  margin-left: 0.5em;
+  font-weight: 700;
 }
 .detail-wrapper .detail .txt-wrapper {
   position: fixed;
@@ -261,15 +394,28 @@ body.pm .item#pm {
   line-height: 100vh;
   top: 0;
   left: -30%;
-  -webkit-transition: left 0.5s ease-out 0;
-  -moz-transition: left 0.5s ease-out 0;
-  transition: left 0.5s ease-out 0;
+  -webkit-transition: left 0.5s ease-in 0s;
+  -moz-transition: left 0.5s ease-in 0s;
+  transition: left 0.5s ease-in 0s;
 }
 .detail-wrapper .detail .txt-wrapper .txt-aligner {
   line-height: 1.5em;
   display: inline-block;
   padding-left: 2em;
   vertical-align: middle;
+}
+.detail-wrapper .detail .txt-wrapper .txt-aligner p {
+  text-indent: 2em;
+}
+.detail-wrapper .detail .join {
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 2em;
+  border: 2px solid #000;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
 }
 .detail-wrapper .department-logo {
   width: 60%;
@@ -280,39 +426,43 @@ body.pm .item#pm {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 400px auto;
-  -webkit-transition: right 0.5s ease-out 0;
-  -moz-transition: right 0.5s ease-out 0;
-  transition: right 0.5s ease-out 0;
+  -webkit-transition: right 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) 0s;
+  -moz-transition: right 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) 0s;
+  transition: right 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) 0s;
 }
 .detail-wrapper:target {
   height: 100%;
   -webkit-transition-property: background-color, height;
   -moz-transition-property: background-color, height;
   transition-property: background-color, height;
-  -webkit-transition-delay: 0;
-  -moz-transition-delay: 0;
-  transition-delay: 0;
-  -webkit-transition-duration: 1s, 0;
-  -moz-transition-duration: 1s, 0;
-  transition-duration: 1s, 0;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-duration: 2s, 0s;
+  -moz-transition-duration: 2s, 0s;
+  transition-duration: 2s, 0s;
 }
 .detail-wrapper:target .detail {
   width: 100vw;
   height: 100vw;
   margin-left: -50vw;
   margin-top: -50vw;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
 }
-.detail-wrapper:target .detail .txt-wrapper {
-  -webkit-transition: left 0.5s ease-out 0.5s;
-  -moz-transition: left 0.5s ease-out 0.5s;
-  transition: left 0.5s ease-out 0.5s;
+.detail-wrapper:target .detail .txt-wrapper,
+.detail-wrapper:target .detail .nav {
+  -webkit-transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  -moz-transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
   left: 0;
 }
 .detail-wrapper:target .department-logo {
   right: 0;
-  -webkit-transition: right 0.5s ease-out 0.5s;
-  -moz-transition: right 0.5s ease-out 0.5s;
-  transition: right 0.5s ease-out 0.5s;
+  -webkit-transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  -moz-transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
 }
 .detail-wrapper#detail-hr:target {
   background-color: #ffea00;
@@ -361,4 +511,224 @@ body.pm .item#pm {
 }
 .detail-wrapper#detail-pm .department-logo {
   background-image: url("imgs/pm.png");
+}
+#joinus .line {
+  display: block;
+}
+#joinus .line:after {
+  content: "";
+  clear: both;
+  display: inline-block;
+  float: left;
+}
+#joinus .line .input {
+  margin-bottom: 1em;
+  display: inline-block;
+  float: left;
+  position: relative;
+  height: 2em;
+  margin-right: 2em;
+}
+#joinus .line .input.input-text {
+  border-bottom: 2px solid #000;
+}
+#joinus .line .input.input-text label {
+  cursor: text;
+  position: absolute;
+  top: 0.1em;
+  left: 0.1em;
+  color: #808080;
+  font-size: 1em;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+#joinus .line .input.input-text.focus label {
+  font-size: 0.6em;
+  top: -1.5em;
+  color: #000;
+}
+#joinus .line .input.input-text input {
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: transparent;
+  font-size: 1em;
+  padding: 0.2em;
+  outline: 0;
+  border: 0;
+}
+#joinus .line .input.input-select {
+  cursor: pointer;
+  height: 2em;
+}
+#joinus .line .input.input-select:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-color: #000 transparent transparent transparent;
+  border-width: 5px;
+  border-style: solid;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 5;
+}
+#joinus .line .input.input-select .choses {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 2px solid #000;
+  width: 100%;
+  list-style: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 2;
+  background-color: #fff;
+}
+#joinus .line .input.input-select .choses .option {
+  display: block;
+  height: 0;
+  line-height: 2em;
+  padding-left: 0.5em;
+  overflow: hidden;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#joinus .line .input.input-select .choses .option.checked {
+  height: 2em;
+}
+#joinus .line .input.input-select.focus {
+  z-index: 10;
+}
+#joinus .line .input.input-select.focus .choses .option {
+  height: 2em;
+}
+#joinus .line .input.input-select.focus .choses .option:hover {
+  background-color: #eee;
+}
+#joinus .line .input.input-textarea {
+  overflow: hidden;
+  height: auto;
+  padding: 0.1em 0;
+}
+#joinus .line .input.input-textarea .prompt {
+  width: 18em;
+}
+#joinus .line .input.input-textarea textarea {
+  display: inline-block;
+  float: left;
+  width: 18em;
+  font-size: 1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-top-color: #000;
+  border-bottom-color: #000;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  padding: 0.5em;
+  min-height: 5em;
+}
+#joinus .line .input.input-file .prompt {
+  width: 18em;
+}
+#joinus {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  -webkit-transition: height 0s ease 1s;
+  -moz-transition: height 0s ease 1s;
+  transition: height 0s ease 1s;
+}
+#joinus #joinus-wrapper {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 0;
+  height: 0;
+  margin-top: 0;
+  margin-right: 0;
+  border-radius: 0;
+  -webkit-transition: all 1s ease 0.2s;
+  -moz-transition: all 1s ease 0.2s;
+  transition: all 1s ease 0.2s;
+}
+#joinus #joinus-wrapper .back {
+  height: 100px;
+  width: 50px;
+  font-size: 48px;
+  line-height: 100px;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 1em;
+  z-index: 25;
+  color: #000;
+  text-decoration: none;
+}
+#joinus #joinus-wrapper #joinus-positioner {
+  position: fixed;
+  height: 100%;
+  line-height: 100vh;
+  width: 24em;
+  right: -30%;
+  top: 0;
+  -webkit-transition: right 0.5s ease-in 0s;
+  -moz-transition: right 0.5s ease-in 0s;
+  transition: right 0.5s ease-in 0s;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 0.3em;
+}
+#joinus #joinus-wrapper #joinus-positioner #joinus-aligner {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.5em;
+}
+#joinus #input-name,
+#joinus #input-gender,
+#joinus #input-long,
+#joinus #input-short,
+#joinus #input-class,
+#joinus #input-grade {
+  width: 8em;
+}
+#joinus #input-email,
+#joinus #input-id,
+#joinus #input-first-chose,
+#joinus #input-second-chose {
+  width: 18em;
+}
+#joinus:target {
+  height: 100%;
+  -webkit-transition: height 0s ease 0s;
+  -moz-transition: height 0s ease 0s;
+  transition: height 0s ease 0s;
+}
+#joinus:target #joinus-wrapper {
+  width: 100vw;
+  height: 100vw;
+  margin-right: -50vw;
+  margin-top: -50vw;
+  border-radius: 50vw;
+  background-color: #fff;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+}
+#joinus:target #joinus-wrapper #joinus-positioner {
+  -webkit-transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  -moz-transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  right: 0;
 }
