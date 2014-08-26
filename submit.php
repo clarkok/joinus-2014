@@ -58,7 +58,7 @@ function error_inject()
 
 function check_inject()
 {
-  foreach(array('name', 'gender', 'long', 'short', 'email', 'first-chose', 'second-chose', 'id', 'grade', 'class', 'ua') as $key)
+  foreach(array('name', 'gender', 'long', 'short', 'email', 'first-chose', 'second-chose', 'id', 'grade', 'class') as $key)
   {
     if (strpos($_POST[$key], "'"))
       return true;
