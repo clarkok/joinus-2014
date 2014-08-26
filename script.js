@@ -262,5 +262,6 @@ function isCanvasSupported(){
 
   w.setTimeout(function () {
     $(w).trigger('hashchange');
+    $('body, html').css('position', 'relative');
   }, 500)
 })(window, window.jQuery)
