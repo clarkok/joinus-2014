@@ -106,7 +106,7 @@ function isCanvasSupported(){
   }).on('blur', function () {
     if ($(this).val().length <= 0)
       $(this).parents('.input').removeClass('focus');
-  });
+  }).trigger('focus').trigger('blur');
   $('.input.input-text').on('click', function () {
     $(this).find('input[type=text]').trigger('focus');
   });
@@ -122,6 +122,42 @@ function isCanvasSupported(){
       $input.find('input').val($(this).data('value'));
     }
   });
+  $('.input-file').on('click', '.button', function () {
+    $(this).parent().find('input[type=file]').trigger('click');
+  });
+  $('.input-submit').on('click', '.button', function () {
+    $(this).parents('form').trigger('submit');
+  });
+})(window, window.jQuery);
+
+(function (w, $) {
+  var Notifier = function () {
+    this.target = $('#notice');
+    this.context = $('#notice-context');
+    this.r = 0;
+  };
+
+  Notifier.prototype.notice = function (context, error) {
+    this.context.html(context);
+    this.target.addClass('show');
+    w.clearTimeout(this.r);
+    if (error)
+      this.context.addClass('error');
+    else
+      this.context.removeClass('error');
+    var _this = this;
+
+    this.r = w.setTimeout(function () {
+      _this.target.removeClass('show');
+    }, 5000);
+  };
+
+  Notifier.prototype.clear = function () {
+    w.clearTimeout(this.r);
+    this.target.removeClass('show');
+  };
+
+  w.Notifier = Notifier;
 })(window, window.jQuery);
 
 (function (w, $) {
@@ -170,5 +206,56 @@ function isCanvasSupported(){
       var deltay = y - parseFloat($this.css('top'));
       set_transform($this, 'rotateY(' + w.Math.tan(deltax / 1000) + 'rad) rotateX(' + (-w.Math.tan(deltay / 1000)) + 'rad)');
     });
+  });
+
+  var form_data = null;
+  var file_list = [];
+
+  var notifier = new w.Notifier();
+
+  var callback = function (data) {
+    if (data.code == 1)
+      notifier.notice('提交失败，请稍后重试', true);
+    else if (data.code == 2) {
+      notifier.notice('表单中有错误，<a href="#joinus">点击查看</a>', true);
+      var l = data.error_list.length;
+      for (var i = 0; i < l; ++i) {
+        $('#input-' + data.error_list[i]).addClass('error');
+      }
+    }
+    else if (data.code == -1) {
+      w.location.hash = '#detail-tech';
+      notifier.notice('年轻人有前途，快加入技术研发中心吧', false);
+    }
+    else {
+      // TODO
+    }
+  };
+
+  $('form').on('submit', function (e) {
+    e.preventDefault();
+    w.location.hash = '';
+    notifier.notice('正在上传');
+    if (form_data)
+      $('input[type=file]').fileupload('send', form_data);
+    else
+      $.post('submit.php', $('form').serialize(), callback, 'json');
+  });
+
+  $('input[type=file]').fileupload({
+    dataType : 'json',
+    formData : function (form) {
+      return form.serializeArray();
+    },
+    add : function (e, data) {
+      form_data = data;
+      file_list = file_list.concat(data.files);
+      form_data.files = file_list;
+    },
+    submit : function (e, data) {
+      console.log('form_data', form_data);
+      console.log('data', data);
+    },
+    autoUpload : false
   });
 })(window, window.jQuery)

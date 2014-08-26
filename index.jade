@@ -12,6 +12,9 @@ html(lang="zh")
   body
     canvas#background
 
+    #notice
+      #notice-context
+
     #wrapper
       a(href="#joinus").logo
         .logo-img
@@ -242,12 +245,16 @@ html(lang="zh")
               .input.input-file#input-file
                 .prompt qewr sdf qwer asdf ger wer sfb wert fbsfd wer sdfg wert
                 .button 选择
-                input(type="file", name="upload")
+                input(type="file", name="upload[]", multiple)
             .line
-              .input.input-submit 提交
+              .input.input-submit
+                .button 提交
 
     <!--[if gt IE 8]><!--> 
     script(src="jquery.js")
+    script(src="js/vendor/jquery.ui.widget.js")
+    script(src="js/jquery.iframe-transport.js")
+    script(src="js/jquery.fileupload.js")
     script(src="background-circle.js")
     script(src="script.js")
     <!--<![endif]-->

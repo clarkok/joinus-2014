@@ -58,6 +58,7 @@ html, body
   padding 0
   width 100%
   height 100%
+  min-width 1024px
   overflow hidden
   position relative
   font-family "Microsoft YaHei UI", "Microsoft YaHei", "Hiragino Sans GB", " WenQuanYi Micro Hei"
@@ -67,6 +68,32 @@ html, body
   height 100%
   opacity 1
   transition opacity .5s
+
+#notice
+  position fixed
+  width 100%
+  height 2em
+  top -8em
+  left 0
+  transition all .5s
+  text-align center
+  z-index 50
+
+  &.show
+    top 0
+
+  #notice-context
+    display inline-block
+    background-color white
+    border 2px solid #777
+    border-radius 1em
+    padding .5em
+
+    &.error
+      border 2px solid #a77
+
+    a
+      color black
 
 $joinus-scale = 0.8
 
@@ -503,16 +530,25 @@ body.pm
   .line
     display block
     &:after
-      content ""
+      content "."
       clear both
-      display inline-block
-      float left
+      display block
+      visibility hidden
+      height 0
     .input
+      &:after
+        content "."
+        clear both
+        display block
+        visibility hidden
+        height 0
+      &.error
+        border-color red!important
       margin-bottom 1em
       display inline-block
       float left
       position relative
-      height 2em
+      min-height 2em
       margin-right 2em
       &.input-text
         border-bottom 2px solid black
@@ -537,10 +573,12 @@ body.pm
           padding .2em
           outline 0
           border 0
+          width 100%
       &.input-select
         cursor pointer
         height 2em
         &:after
+          visibility visible
           content ""
           width 0
           height 0
@@ -600,6 +638,19 @@ body.pm
       &.input-file
         .prompt
           width 18em
+        input[type=file]
+          display none
+      .button
+        cursor pointer
+        box-sizing border-box
+        width 18em
+        line-height 2em
+        height 2em
+        text-align center
+        border-radius 1em
+        border 2px solid black
+        display inline-block
+        float left
 
 #joinus
   position absolute
@@ -637,7 +688,7 @@ body.pm
       height 100%
       line-height 100vh
       width 24em
-      right -30%
+      right -24em
       top 0
       transition right .5s ease-in 0s
       overflow-y auto

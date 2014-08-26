@@ -5,6 +5,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+  min-width: 1024px;
   overflow: hidden;
   position: relative;
   font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Hiragino Sans GB", " WenQuanYi Micro Hei";
@@ -16,6 +17,34 @@ body {
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   transition: opacity 0.5s;
+}
+#notice {
+  position: fixed;
+  width: 100%;
+  height: 2em;
+  top: -8em;
+  left: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  text-align: center;
+  z-index: 50;
+}
+#notice.show {
+  top: 0;
+}
+#notice #notice-context {
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid #777;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+#notice #notice-context.error {
+  border: 2px solid #a77;
+}
+#notice #notice-context a {
+  color: #000;
 }
 body.joinus #background {
   opacity: 0;
@@ -522,18 +551,29 @@ body.pm .item#pm {
   display: block;
 }
 #joinus .line:after {
-  content: "";
+  content: ".";
   clear: both;
-  display: inline-block;
-  float: left;
+  display: block;
+  visibility: hidden;
+  height: 0;
 }
 #joinus .line .input {
   margin-bottom: 1em;
   display: inline-block;
   float: left;
   position: relative;
-  height: 2em;
+  min-height: 2em;
   margin-right: 2em;
+}
+#joinus .line .input:after {
+  content: ".";
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
+}
+#joinus .line .input.error {
+  border-color: #f00 !important;
 }
 #joinus .line .input.input-text {
   border-bottom: 2px solid #000;
@@ -564,12 +604,14 @@ body.pm .item#pm {
   padding: 0.2em;
   outline: 0;
   border: 0;
+  width: 100%;
 }
 #joinus .line .input.input-select {
   cursor: pointer;
   height: 2em;
 }
 #joinus .line .input.input-select:after {
+  visibility: visible;
   content: "";
   width: 0;
   height: 0;
@@ -645,6 +687,23 @@ body.pm .item#pm {
 #joinus .line .input.input-file .prompt {
   width: 18em;
 }
+#joinus .line .input.input-file input[type=file] {
+  display: none;
+}
+#joinus .line .input .button {
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 18em;
+  line-height: 2em;
+  height: 2em;
+  text-align: center;
+  border-radius: 1em;
+  border: 2px solid #000;
+  display: inline-block;
+  float: left;
+}
 #joinus {
   position: absolute;
   width: 100%;
@@ -687,7 +746,7 @@ body.pm .item#pm {
   height: 100%;
   line-height: 100vh;
   width: 24em;
-  right: -30%;
+  right: -24em;
   top: 0;
   -webkit-transition: right 0.5s ease-in 0s;
   -moz-transition: right 0.5s ease-in 0s;
