@@ -197,7 +197,6 @@ function isCanvasSupported(){
   }
 
   $(w.document).on('mousemove', 'body.ready', function (e) {
-    console.log(e.clientX, e.clientY);
     var x = e.clientX - $(w).width() / 2;
     var y = e.clientY - $(w).height() / 2;
     $('.item').each(function () {
@@ -214,6 +213,7 @@ function isCanvasSupported(){
   var notifier = new w.Notifier();
 
   var callback = function (data) {
+    console.log(data);
     if (data.code == 1)
       notifier.notice('提交失败，请稍后重试', true);
     else if (data.code == 2) {
@@ -228,7 +228,8 @@ function isCanvasSupported(){
       notifier.notice('年轻人有前途，快加入技术研发中心吧', false);
     }
     else {
-      notifier.notice('提交成功');
+      console.log('else');
+      notifier.notice('提交成功', false);
       $('.error').removeClass('error');
     }
   };
@@ -252,10 +253,6 @@ function isCanvasSupported(){
       form_data = data;
       file_list = file_list.concat(data.files);
       form_data.files = file_list;
-    },
-    submit : function (e, data) {
-      console.log('form_data', form_data);
-      console.log('data', data);
     },
     autoUpload : false
   });

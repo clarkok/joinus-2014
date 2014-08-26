@@ -76,7 +76,7 @@ function check_inject()
   $inject = check_inject();
 
   // save attacker's infomation on purpose
-  $query = 'INSERT INTO info (name, gender, long_num, short_num, email, first_chose, second_chose, sid, grade, class, question1, question2, time, ua, ip, fill_duration, view_duration, injection) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?, ?)';
+  $query = 'INSERT INTO info (name, gender, long_num, short_num, email, first_chose, second_chose, sid, grade, class, question1, question2, question3, time, ua, ip, fill_duration, view_duration, injection) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?, ?)';
 
   $stmt = $con->stmt_init();
 
@@ -84,7 +84,7 @@ function check_inject()
   {
     $zero = 0;
     $one = 1;
-    $stmt->bind_param('sisssiisssssssiii', $_POST['name'], $_POST['gender'], $_POST['long'], $_POST['short'], $_POST['email'], $_POST['first-chose'], $_POST['second-chose'], $_POST['id'], $_POST['grade'], $_POST['class'], $_POST['question1'], $_POST['question2'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR'], $zero, $zero, $inject ? $one : $zero);
+    $stmt->bind_param('sisssiissssssssiii', $_POST['name'], $_POST['gender'], $_POST['long'], $_POST['short'], $_POST['email'], $_POST['first-chose'], $_POST['second-chose'], $_POST['id'], $_POST['grade'], $_POST['class'], $_POST['question1'], $_POST['question2'], $_POST['question3'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR'], $zero, $zero, $inject ? $one : $zero);
     $stmt->execute();
     $stmt->close();
   }
