@@ -187,7 +187,7 @@ function isCanvasSupported(){
     else {
       $('body').get(0).className = "ready";
     }
-  }).trigger('hashchange');
+  });
 
   if (isCanvasSupported()) {
     var bg = new w.Background('background');
@@ -259,4 +259,8 @@ function isCanvasSupported(){
     },
     autoUpload : false
   });
+
+  w.setTimeout(function () {
+    $(w).trigger('hashchange');
+  }, 500)
 })(window, window.jQuery)
