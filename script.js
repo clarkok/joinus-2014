@@ -161,6 +161,8 @@ function isCanvasSupported(){
 })(window, window.jQuery);
 
 (function (w, $) {
+  var view_start = new Date();
+  var fill_start = new Date();
   var slider = null;
   var set_transform = function ($target, arg) {
     return $target.css({
@@ -178,6 +180,7 @@ function isCanvasSupported(){
     var hash = w.location.hash;
     if (hash == '#joinus') {
       $('body').get(0).className = 'joinus';
+      fill_start = new Date();
     }
     else
     if (hash.length && (hash != '#')) {
@@ -238,6 +241,8 @@ function isCanvasSupported(){
     e.preventDefault();
     w.location.hash = '';
     notifier.notice('正在上传');
+    $('#input-fill').val((new Date()) - fill_start);
+    $('#input-view').val((new Date()) - view_start);
     if (form_data)
       $('input[type=file]').fileupload('send', form_data);
     else
