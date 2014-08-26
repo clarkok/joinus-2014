@@ -114,6 +114,9 @@ body.joinus .item#pm {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  perspective: 1000px;
 }
 .item {
   width: 100px;
@@ -125,6 +128,9 @@ body.joinus .item#pm {
   -webkit-transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
   -moz-transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition-property: top, left, opacity;
+  -moz-transition-property: top, left, opacity;
+  transition-property: top, left, opacity;
   opacity: 0;
 }
 .item .front {

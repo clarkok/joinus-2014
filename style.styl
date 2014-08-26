@@ -42,6 +42,16 @@ box-sizing()
   -moz-box-sizing arguments
   box-sizing arguments
 
+perspective()
+  -webkit-perspective arguments
+  -moz-perspective arguments
+  perspective arguments
+
+transform()
+  -webkit-transform arguments
+  -moz-transform arguments
+  transform arguments
+
 html, body
   background-color #e7e7e7
   margin 0
@@ -151,6 +161,7 @@ body.joinus
   top 50%
   left 50%
   transition all .5s
+  perspective 1000px
 
 .item
   width $item-size
@@ -160,6 +171,7 @@ body.joinus
   margin-top -($item-size / 2)
   margin-left -($item-size / 2)
   transition all 2s cubic-bezier(0.165, 0.84, 0.44, 1)
+  transition-property top, left, opacity
   opacity 0
 
   .front
