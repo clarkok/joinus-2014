@@ -69,6 +69,7 @@ function check_inject()
   $con = mysqli_connect('localhost','joinus-2014','joinus', 'joinus-2014');
   if (!$con)
     error('Cannot connect to Database');
+  mysqli_set_charset ($con, 'utf-8');
 
   check_data($con);
 

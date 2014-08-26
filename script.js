@@ -228,7 +228,8 @@ function isCanvasSupported(){
       notifier.notice('年轻人有前途，快加入技术研发中心吧', false);
     }
     else {
-      // TODO
+      notifier.notice('提交成功');
+      $('.error').removeClass('error');
     }
   };
 
