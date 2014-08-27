@@ -23,7 +23,8 @@ function check_data($con)
 {
   $error_list = array();
 
-  $p = $_POST;
+  $p = $_REQUEST;
+  var_dump($p);
 
   if (strlen($p['name']) > 10 || strlen($p['name']) < 2)
     array_push($error_list, 'name');
@@ -105,7 +106,7 @@ function check_inject()
   {
     if ($_FILES['upload']['error'][$i] > 0)
       error('File ' . $_FILES['upload']['name'][$i] . ' Upload Error!');
-    else
+    else if ($_FILES['upload']['size'][$i] <= 16777216)
     {
       $file_name = tempnam('upload/', 'up');
       move_uploaded_file($_FILES['upload']['tmp_name'][$i], $file_name);

@@ -210,13 +210,17 @@ function isCanvasSupported(){
     });
   });
 
-  var form_data = null;
   var file_list = [];
 
   var notifier = new w.Notifier();
 
-  var callback = function (data) {
-    console.log(data);
+  var callback = function () {
+    console.log(arguments);
+    var data;
+    if (arguments.length == 3)
+      data = arguments[2];
+    else
+      data = arguments[1].result;
     if (data.code == 1)
       notifier.notice('提交失败，请稍后重试', true);
     else if (data.code == 2) {
@@ -243,23 +247,43 @@ function isCanvasSupported(){
     notifier.notice('正在上传');
     $('#input-fill').val((new Date()) - fill_start);
     $('#input-view').val((new Date()) - view_start);
-    if (form_data)
-      $('input[type=file]').fileupload('send', form_data);
+    if (file_list.length)
+      $('input[type=file]').fileupload('send', {files : file_list});
     else
       $.post('submit.php', $('form').serialize(), callback, 'json');
   });
 
+  $('#list').on('click', '.list-item', function () {
+    var text = $(this).text();
+    var l = file_list.length;
+    for (var i = 0; i < l; ++i) {
+      if (file_list[i].name == text) {
+        file_list.splice(i, 1);
+        $(this).detach();
+        break;
+      }
+    }
+    console.log(file_list);
+  });
+
   $('input[type=file]').fileupload({
     dataType : 'json',
-    formData : function (form) {
-      return form.serializeArray();
-    },
     add : function (e, data) {
-      form_data = data;
+      console.log(data.files);
+      if (file_list.length >= 5 || data.files[0].size > 15 * 1024 * 1024) {
+        alert('最多提交5个文件，每个文件最大15M。\n更大可以传网盘嗷');
+        return;
+      }
+      $('#list').append(
+        $('<li />').addClass('list-item').text(data.files[0].name)
+      );
       file_list = file_list.concat(data.files);
-      form_data.files = file_list;
     },
+    done : callback,
     autoUpload : false
+  }).bind('fileuploadsubmit', function (e, data) {
+    data.formData = $('#joinus-wrapper').serializeArray();
+    console.log(data.formData);
   });
 
   w.setTimeout(function () {

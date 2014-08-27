@@ -639,6 +639,18 @@ body.pm
           width 18em
         input[type=file]
           display none
+        #list
+          list-style disc outside none
+          padding-left 2em
+          .list-item
+            &:hover
+              background-color #FDD
+              &:after
+                content "X"
+                color red
+                float right
+                margin-right .5em
+                cursor pointer
       .button
         cursor pointer
         box-sizing border-box

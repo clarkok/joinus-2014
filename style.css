@@ -689,6 +689,20 @@ body.pm .item#pm {
 #joinus .line .input.input-file input[type=file] {
   display: none;
 }
+#joinus .line .input.input-file #list {
+  list-style: disc outside none;
+  padding-left: 2em;
+}
+#joinus .line .input.input-file #list .list-item:hover {
+  background-color: #fdd;
+}
+#joinus .line .input.input-file #list .list-item:hover:after {
+  content: "X";
+  color: #f00;
+  float: right;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
 #joinus .line .input .button {
   cursor: pointer;
   -webkit-box-sizing: border-box;
