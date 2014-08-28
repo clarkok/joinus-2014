@@ -1,4 +1,5 @@
 <?php
+require('database.php')
 function error($txt)
 {
   $json = (object)array(
@@ -67,7 +68,7 @@ function check_inject()
   return false;
 }
 
-  $con = mysqli_connect('localhost','joinus-2014','joinus', 'joinus-2014');
+  $con = mysqli_connect('localhost', $database['username'], $database['password'], $databse['database']);
   if (!$con)
     error('Cannot connect to Database');
   mysqli_set_charset ($con, 'utf-8');
