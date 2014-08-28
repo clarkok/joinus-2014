@@ -1,5 +1,5 @@
 <?php
-require('database.php')
+require('database.php');
 function error($txt)
 {
   $json = (object)array(
