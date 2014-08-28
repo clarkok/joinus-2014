@@ -92,32 +92,6 @@ function check_inject()
   else
     error('insert error' . $stmt->error);
 
-  $id = mysqli_insert_id($con);
-  $file_count = count($_FILES['upload']['name']);
-
-  $query = "INSERT INTO uploads (id, original_name, file_name) VALUES (?, ?, ?)";
-
-  $stmt = $con->stmt_init();
-
-  if (! $stmt->prepare($query))
-    error('file insert error'. $stmt-error);
-
-  for ($i = 0; $i < $file_count; ++$i)
-  {
-    if ($_FILES['upload']['error'][$i] > 0)
-      error('File ' . $_FILES['upload']['name'][$i] . ' Upload Error!');
-    else if ($_FILES['upload']['size'][$i] <= 16777216)
-    {
-      $file_name = tempnam('upload/', 'up');
-      move_uploaded_file($_FILES['upload']['tmp_name'][$i], $file_name);
-
-      $stmt->bind_param('iss', $id, $_FILES['upload']['name'][$i], $file_name);
-      $stmt->execute();
-    }
-  }
-
-  $stmt->close();
-
   if ($inject)
     error_inject();
 

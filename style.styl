@@ -618,12 +618,13 @@ body.pm
         overflow hidden
         height auto
         padding .1em 0
+        width 100%
         .prompt
-          width 18em
+          width 100%
         textarea
           display inline-block
           float left
-          width 18em
+          width 100%
           font-size 16px
           box-sizing border-box
           border-width 2px
@@ -635,8 +636,9 @@ body.pm
           padding .5em
           min-height 5em
       &.input-file
+        width 100%
         .prompt
-          width 18em
+          width 100%
         input[type=file]
           display none
         #list
@@ -651,10 +653,12 @@ body.pm
                 float right
                 margin-right .5em
                 cursor pointer
+      &.input-submit
+        width 100%
       .button
         cursor pointer
         box-sizing border-box
-        width 18em
+        width 100%
         line-height 2em
         height 2em
         text-align center
@@ -695,26 +699,35 @@ body.pm
       color black
       text-decoration none
     #joinus-positioner
+      box-sizing border-box
       padding-top 1em
       position fixed
       height 100%
       line-height 100vh
-      width 24em
-      right -24em
+      width 30%
+      min-width 24em
+      right -30%
       top 0
       transition right .5s ease-in 0s
       overflow-y auto
       overflow-x hidden
       padding-left .3em
       #joinus-aligner
+        width 100%
+        padding-right 2em
+        box-sizing border-box
         display inline-block
         vertical-align middle
         line-height 1.5em
   #input-name, #input-gender, #input-long, #input-short, #input-class, #input-grade
-    width 8em
+    width 45%
 
   #input-email, #input-id, #input-first-chose, #input-second-chose
-    width 18em
+    width 100%
+
+  .input.right
+    float right
+    margin-right 0
 
   &:target
     height 100%

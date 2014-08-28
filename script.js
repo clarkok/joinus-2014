@@ -206,11 +206,9 @@ function isCanvasSupported(){
       var $this = $(this);
       var deltax = x - parseFloat($this.css('left'));
       var deltay = y - parseFloat($this.css('top'));
-      set_transform($this, 'rotateY(' + w.Math.tan(deltax / 1000) + 'rad) rotateX(' + (-w.Math.tan(deltay / 1000)) + 'rad)');
+      set_transform($this, 'rotateY(' + w.Math.tan(deltax / 2000) + 'rad) rotateX(' + (-w.Math.tan(deltay / 2000)) + 'rad)');
     });
   });
-
-  var file_list = [];
 
   var notifier = new w.Notifier();
 
@@ -247,43 +245,39 @@ function isCanvasSupported(){
     notifier.notice('正在上传');
     $('#input-fill').val((new Date()) - fill_start);
     $('#input-view').val((new Date()) - view_start);
-    if (file_list.length)
-      $('input[type=file]').fileupload('send', {files : file_list});
-    else
-      $.post('submit.php', $('form').serialize(), callback, 'json');
+    $.post('submit.php', $('form').serialize(), callback, 'json');
   });
 
   $('#list').on('click', '.list-item', function () {
     var text = $(this).text();
-    var l = file_list.length;
-    for (var i = 0; i < l; ++i) {
-      if (file_list[i].name == text) {
-        file_list.splice(i, 1);
-        $(this).detach();
-        break;
-      }
-    }
-    console.log(file_list);
+    $(this).detach();
   });
 
   $('input[type=file]').fileupload({
-    dataType : 'json',
+    url : 'upload.php',
     add : function (e, data) {
-      console.log(data.files);
-      if (file_list.length >= 5 || data.files[0].size > 15 * 1024 * 1024) {
-        alert('最多提交5个文件，每个文件最大15M。\n更大可以传网盘嗷');
-        return;
+      console.log('add', data);
+      if (data.files[0].size > 15 * 1024 * 1024) {
+        alert('每个文件最大15M，更大可以传网盘嗷');
       }
       $('#list').append(
         $('<li />').addClass('list-item').text(data.files[0].name)
       );
-      file_list = file_list.concat(data.files);
+      data.process().done(function () {
+        data.submit();
+      });
     },
-    done : callback,
-    autoUpload : false
+    done : function () {
+    }
   }).bind('fileuploadsubmit', function (e, data) {
-    data.formData = $('#joinus-wrapper').serializeArray();
-    console.log(data.formData);
+    if ($('input[name=id]').val().length) {
+      data.formData = {
+        id : $('input[name=id]').val()
+      };
+      return true;
+    }
+    else
+      return false;
   });
 
   w.setTimeout(function () {

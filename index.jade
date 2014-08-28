@@ -179,7 +179,7 @@ html(lang="zh")
               .input.input-text#input-name
                 label 姓名*
                 input(type="text", name="name")
-              .input.input-select#input-gender
+              .input.right.input-select#input-gender
                 ul.choses
                   li.option.checked(data-value="0") 性别
                   li.option(data-value="1") 男生
@@ -189,7 +189,7 @@ html(lang="zh")
               .input.input-text#input-long
                 label 长号*
                 input(type="text", name="long")
-              .input.input-text#input-short
+              .input.right.input-text#input-short
                 label 短号
                 input(type="text", name="short")
             .line
@@ -232,7 +232,7 @@ html(lang="zh")
               .input.input-text#input-grade
                 label 年级
                 input(type="text", name="grade")
-              .input.input-text#input-class
+              .input.right.input-text#input-class
                 label 大类
                 input(type="text", name="class")
             .line
@@ -252,10 +252,12 @@ html(lang="zh")
                 .prompt 你可以上传任何能展示你的作品
                 .ul#list
                 .button 添加
-                input(type="file", name="upload[]", multiple)
+                input(type="file", name="upload[]", for="file-upload", multiple)
             .line
               .input.input-submit
                 .button 提交
+
+    form#file-upload(action="upload.php", method="POST", enctype="multipart/form-data")
 
     <!--[if gt IE 8]><!--> 
     script(src="jquery.js")

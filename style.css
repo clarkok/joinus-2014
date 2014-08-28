@@ -662,14 +662,15 @@ body.pm .item#pm {
   overflow: hidden;
   height: auto;
   padding: 0.1em 0;
+  width: 100%;
 }
 #joinus .line .input.input-textarea .prompt {
-  width: 18em;
+  width: 100%;
 }
 #joinus .line .input.input-textarea textarea {
   display: inline-block;
   float: left;
-  width: 18em;
+  width: 100%;
   font-size: 16px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -683,8 +684,11 @@ body.pm .item#pm {
   padding: 0.5em;
   min-height: 5em;
 }
+#joinus .line .input.input-file {
+  width: 100%;
+}
 #joinus .line .input.input-file .prompt {
-  width: 18em;
+  width: 100%;
 }
 #joinus .line .input.input-file input[type=file] {
   display: none;
@@ -703,12 +707,15 @@ body.pm .item#pm {
   margin-right: 0.5em;
   cursor: pointer;
 }
+#joinus .line .input.input-submit {
+  width: 100%;
+}
 #joinus .line .input .button {
   cursor: pointer;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 18em;
+  width: 100%;
   line-height: 2em;
   height: 2em;
   text-align: center;
@@ -759,8 +766,9 @@ body.pm .item#pm {
   position: fixed;
   height: 100%;
   line-height: 100vh;
-  width: 24em;
-  right: -24em;
+  width: 30%;
+  min-width: 24em;
+  right: -30%;
   top: 0;
   -webkit-transition: right 0.5s ease-in 0s;
   -moz-transition: right 0.5s ease-in 0s;
@@ -770,6 +778,11 @@ body.pm .item#pm {
   padding-left: 0.3em;
 }
 #joinus #joinus-wrapper #joinus-positioner #joinus-aligner {
+  width: 100%;
+  padding-right: 2em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   display: inline-block;
   vertical-align: middle;
   line-height: 1.5em;
@@ -780,13 +793,17 @@ body.pm .item#pm {
 #joinus #input-short,
 #joinus #input-class,
 #joinus #input-grade {
-  width: 8em;
+  width: 45%;
 }
 #joinus #input-email,
 #joinus #input-id,
 #joinus #input-first-chose,
 #joinus #input-second-chose {
-  width: 18em;
+  width: 100%;
+}
+#joinus .input.right {
+  float: right;
+  margin-right: 0;
 }
 #joinus:target {
   height: 100%;
