@@ -256,16 +256,22 @@ function isCanvasSupported(){
   $('input[type=file]').fileupload({
     url : 'upload.php',
     add : function (e, data) {
-      console.log('add', data);
-      if (data.files[0].size > 15 * 1024 * 1024) {
-        alert('每个文件最大15M，更大可以传网盘嗷');
+      if ($('input[name=id]').val().length) {
+        if (data.files[0].size > 15 * 1024 * 1024) {
+          alert('每个文件最大15M，更大可以传网盘嗷');
+        }
+        $('#list').append(
+          $('<li />').addClass('list-item').text(data.files[0].name)
+        );
+        data.process().done(function () {
+          console.log('submit');
+          data.submit();
+        });
       }
-      $('#list').append(
-        $('<li />').addClass('list-item').text(data.files[0].name)
-      );
-      data.process().done(function () {
-        data.submit();
-      });
+      else {
+        alert('ID first');
+        return false;
+      }
     },
     done : function () {
     }
@@ -276,8 +282,10 @@ function isCanvasSupported(){
       };
       return true;
     }
-    else
+    else {
+      alert('ID first');
       return false;
+    }
   });
 
   w.setTimeout(function () {

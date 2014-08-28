@@ -31,7 +31,7 @@ function error($text) {
       array_push($error_list, $_FILES['upload']['name'][$i]);
       continue;
     }
-    $filename = tempnam('upload', 'up_');
+    $filename = tempnam('./upload', 'up_');
     move_uploaded_file($_FILES['upload']['tmp_name'][$i], $filename);
     $stmt->bind_param('sss', $_POST['id'], $_FILES['upload']['name'][$i], $filename);
     $stmt->execute();
