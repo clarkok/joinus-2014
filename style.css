@@ -92,22 +92,22 @@ body.joinus .item#pm {
 .logo {
   outline: 0;
   display: block;
-  height: 300px;
+  height: 200px;
   left: 50%;
-  margin-left: -150px;
-  margin-top: -150px;
+  margin-left: -100px;
+  margin-top: -100px;
   position: absolute;
   top: 50%;
-  width: 300px;
+  width: 200px;
   text-decoration: none;
 }
 .logo .logo-img {
   background-image: url("imgs/logo.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 300px 300px;
-  height: 300px;
-  width: 300px;
+  background-size: 200px 200px;
+  height: 200px;
+  width: 200px;
 }
 .logo .logo-txt {
   text-align: center;
@@ -549,12 +549,21 @@ body.pm .item#pm {
 #joinus .line {
   display: block;
 }
+#joinus .line p {
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1em;
+}
 #joinus .line:after {
   content: ".";
   clear: both;
   display: block;
   visibility: hidden;
   height: 0;
+}
+#joinus .line.note {
+  font-size: 0.8em;
+  color: #808080;
 }
 #joinus .line .input {
   margin-bottom: 1em;
@@ -690,6 +699,14 @@ body.pm .item#pm {
 #joinus .line .input.input-file .prompt {
   width: 100%;
 }
+#joinus .line .input.input-file .button {
+  display: inline-block;
+  float: right;
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  line-height: 28px;
+}
 #joinus .line .input.input-file input[type=file] {
   display: none;
 }
@@ -762,6 +779,9 @@ body.pm .item#pm {
   text-decoration: none;
 }
 #joinus #joinus-wrapper #joinus-positioner {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding-top: 1em;
   position: fixed;
   height: 100%;

@@ -104,8 +104,9 @@ function isCanvasSupported(){
   $('input').on('focus', function () {
     $(this).parents('.input').addClass('focus');
   }).on('blur', function () {
-    if ($(this).val().length <= 0)
-      $(this).parents('.input').removeClass('focus');
+    $(this).parents('.input').removeClass('focus');
+    if ($(this).attr('type') === 'text' && $(this).val().length > 0)
+      $(this).parents('.input').addClass('focus');
   }).trigger('focus').trigger('blur');
   $('.input.input-text').on('click', function () {
     $(this).find('input[type=text]').trigger('focus');
@@ -123,7 +124,7 @@ function isCanvasSupported(){
     }
   });
   $('.input-file').on('click', '.button', function () {
-    $(this).parent().find('input[type=file]').trigger('click');
+    $(this).parents('.input-file').find('input[type=file]').trigger('click');
   });
   $('.input-submit').on('click', '.button', function () {
     $(this).parents('form').trigger('submit');
@@ -213,7 +214,6 @@ function isCanvasSupported(){
   var notifier = new w.Notifier();
 
   var callback = function () {
-    console.log(arguments);
     var data;
     if (arguments.length == 3)
       data = arguments[2];
@@ -233,7 +233,6 @@ function isCanvasSupported(){
       notifier.notice('年轻人有前途，快加入技术研发中心吧', false);
     }
     else {
-      console.log('else');
       notifier.notice('提交成功', false);
       $('.error').removeClass('error');
     }
@@ -264,7 +263,6 @@ function isCanvasSupported(){
           $('<li />').addClass('list-item').text(data.files[0].name)
         );
         data.process().done(function () {
-          console.log('submit');
           data.submit();
         });
       }
@@ -292,4 +290,105 @@ function isCanvasSupported(){
     $(w).trigger('hashchange');
     $('body, html').css('position', 'relative');
   }, 500)
-})(window, window.jQuery)
+
+  var restore = function (data) {
+    if (data) {
+      if (0 >= $('input[name=name]').val().length)
+        $('input[name=name]').val(data.name).blur();
+      console.log(data.name);
+      if (0 >= $('input[name=id]').val().length)
+        $('input[name=id]').val(data.id).blur();
+      console.log(name.id);
+      if (0 >= $('input[name=email]').val().length)
+        $('input[name=email]').val(data.email).blur();
+      console.log(data.email);
+      if (0 >= $('input[name=long]').val().length)
+        $('input[name=long]').val(data.long_num).blur();
+      console.log(data.long_num);
+      if (0 >= $('input[name=short]').val().length)
+        $('input[name=short]').val(data.short_num).blur();
+      console.log(data.short_num);
+      if (0 >= $('input[name=grade]').val().length)
+        $('input[name=grade]').val(data.grade).blur();
+      console.log('grade');
+      if (0 >= $('input[name=class]').val().length)
+        $('input[name=class]').val(data.class).blur();
+      console.log('class');
+      if (0 >= $('#self-intro').val().length)
+        $('#self-intro').val(data.question1).blur();
+      console.log('q1');
+      if (0 >= $('#question1').val().length)
+        $('#question1').val(data.question2).blur();
+      console.log('q2');
+      if (0 >= $('#question2').val().length)
+        $('#question2').val(data.question3).blur();
+      console.log('q3');
+      var $parent;
+      if (0 == $('input[name=gender]').val() && (data.gender)) {
+        $('input[name=gender]').val(data.gender);
+        $parent = $('input[name=gender]').parents('.input');
+        $parent.find('.checked').removeClass('checked');
+        $parent.find('[data-value=' + parseInt(data.gender) + ']').addClass('checked');
+      }
+      if (0 == $('input[name=first-chose]').val() && (data.first_chose)) {
+        $('input[name=first-chose]').val(data.first_chose);
+        $parent = $('input[name=first-chose]').parents('.input');
+        $parent.find('.checked').removeClass('checked');
+        $parent.find('[data-value=' + parseInt(data.first_chose) + ']').addClass('checked');
+      }
+      if (0 == $('input[name=second-chose]').val() && (data.second_chose)) {
+        $('input[name=second-chose]').val(data.second_chose);
+        $parent = $('input[name=second-chose]').parents('.input');
+        $parent.find('.checked').removeClass('checked');
+        $parent.find('[data-value=' + parseInt(data.second_chose) + ']').addClass('checked');
+      }
+    }
+  };
+
+  var save = function () {
+    var res = {
+      name : $('input[name=name]').val(),
+      gender : $('input[name=gender]').val(),
+      long_num : $('input[name=long]').val(),
+      short_num : $('input[name=short]').val(),
+      email : $('input[name=email]').val(),
+      id : $('input[name=id]').val(),
+      grade : $('input[name=grade]').val(),
+      class : $('input[name=class]').val(),
+      first_chose : $('input[name=first-chose]').val(),
+      second_chose : $('input[name=second-chose]').val(),
+      question1 : $('#self-intro').val(),
+      question2 : $('#question1').val(),
+      question3 : $('#questino2').val()
+    };
+
+    w.localStorage.form_data = JSON.stringify(res);
+  };
+
+  var restore_local = function () {
+    if (w.localStorage.form_data) {
+      var res = JSON.parse(w.localStorage.form_data);
+      restore(res);
+    }
+  };
+
+  restore_local();
+
+  var post_lock = false;
+
+  w.setInterval(function () {
+    post_lock = false;
+  }, 500);
+
+  $('input[name=name], input[name=email], input[name=id]').on('blur', function () {
+    if (post_lock) return;
+    post_lock = true;
+    $.post('saved.php', {
+      name : $('input[name=name]').val(),
+      email : $('input[name=email]').val(),
+      id : $('input[name=id]').val()
+    }, restore, 'json');
+  });
+
+  w.setInterval(save, 10000);
+})(window, window.jQuery);

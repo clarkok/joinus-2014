@@ -25,7 +25,6 @@ function check_data($con)
   $error_list = array();
 
   $p = $_REQUEST;
-  var_dump($p);
 
   if (strlen($p['name']) > 10 || strlen($p['name']) < 2)
     array_push($error_list, 'name');
@@ -68,7 +67,7 @@ function check_inject()
   return false;
 }
 
-  $con = mysqli_connect('localhost', $database['username'], $database['password'], $databse['database']);
+  $con = mysqli_connect('localhost', $database['username'], $database['password'], $database['database']);
   if (!$con)
     error('Cannot connect to Database');
   mysqli_set_charset ($con, 'utf-8');

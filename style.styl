@@ -1,4 +1,4 @@
-$logo-size = 300px
+$logo-size = 200px
 $item-size = 100px
 $item-circle-radius = 300px
 
@@ -528,12 +528,19 @@ body.pm
 #joinus
   .line
     display block
+    p
+      margin-top 0
+      margin-bottom 1em
+      line-height 1em
     &:after
       content "."
       clear both
       display block
       visibility hidden
       height 0
+    &.note
+      font-size .8em
+      color grey
     .input
       &:after
         content "."
@@ -639,6 +646,13 @@ body.pm
         width 100%
         .prompt
           width 100%
+        .button
+          display inline-block
+          float right
+          width 2em
+          height 2em
+          border-radius 1em
+          line-height 28px
         input[type=file]
           display none
         #list

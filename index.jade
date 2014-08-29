@@ -175,6 +175,11 @@ html(lang="zh")
         input#input-view(type="hide", name="view-duration")
         #joinus-positioner
           #joinus-aligner
+            .line.note
+              p 欢迎来到求是潮报名页面
+              ol
+                li 带有 “*” 的内容为必填项
+                li 请记牢自己所填的姓名，学号和邮箱，在任意电脑输入以上信息即可以再次编辑上次提交的内容
             .line
               .input.input-text#input-name
                 label 姓名*
@@ -195,7 +200,18 @@ html(lang="zh")
             .line
               .input.input-text#input-email
                 label Email*
-                input(type="email", name="email")
+                input(type="text", name="email")
+            .line
+              .input.input-text#input-id
+                label 学号*
+                input(type="text", name="id")
+            .line
+              .input.input-text#input-grade
+                label 年级
+                input(type="text", name="grade")
+              .input.right.input-text#input-class
+                label 大类
+                input(type="text", name="class")
             .line
               .input.input-select#input-first-chose
                 ul.choses
@@ -225,33 +241,22 @@ html(lang="zh")
                   li.option(data-value="9") 产品运营部门
                 input(type="hidden", name="second-chose", value="0")
             .line
-              .input.input-text#input-id
-                label 学号*
-                input(type="text", name="id")
-            .line
-              .input.input-text#input-grade
-                label 年级
-                input(type="text", name="grade")
-              .input.right.input-text#input-class
-                label 大类
-                input(type="text", name="class")
-            .line
               .input.input-textarea#input-question1
-                .prompt 自我介绍
-                textarea(name="question1")
+                label(for="self-intro").prompt 自我介绍
+                textarea#self-intro(name="question1")
             .line
               .input.input-textarea#input-question2
-                .prompt 请谈谈你对求是潮的第一印象
-                textarea(name="question2")
+                label(for="question1").prompt 请谈谈你对求是潮的第一印象
+                textarea#question1(name="question2")
             .line
               .input.input-textarea#input-question3
-                .prompt 请谈谈你对所报部门的认识
-                textarea(name="question3")
+                label(for="question2").prompt 请谈谈你对所报部门的认识
+                textarea#question2(name="question3")
             .line
               .input.input-file#input-file
                 .prompt 你可以上传任何能展示你的作品
+                  .button +
                 .ul#list
-                .button 添加
                 input(type="file", name="upload[]", for="file-upload", multiple)
             .line
               .input.input-submit
@@ -264,6 +269,6 @@ html(lang="zh")
     script(src="js/vendor/jquery.ui.widget.js")
     script(src="js/jquery.iframe-transport.js")
     script(src="js/jquery.fileupload.js")
-    script(src="background-circle.js")
+    script(src="background-incredible.js")
     script(src="script.js")
     <!--<![endif]-->
