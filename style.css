@@ -123,8 +123,8 @@ body.joinus .item#pm {
   text-decoration: none;
 }
 .logo:hover .logo-txt {
-  text-indent: 1em;
-  letter-spacing: 1em;
+  text-indent: 0.5em;
+  letter-spacing: 0.5em;
   opacity: 1;
 }
 .logo.dark .logo-img {
