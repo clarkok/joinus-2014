@@ -1009,7 +1009,7 @@ body[hover=pm] #wrapper .item#pm .front span {
   line-height: 100vh;
   width: 30%;
   min-width: 24em;
-  right: -30%;
+  right: -100%;
   top: 0;
   -webkit-transition: right 0.5s ease-in 0s;
   -moz-transition: right 0.5s ease-in 0s;
