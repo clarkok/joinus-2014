@@ -1,10 +1,5 @@
 "use strict";
 
-function isCanvasSupported(){
-  var elem = document.createElement('canvas');
-  return !!(elem.getContext && elem.getContext('2d'));
-}
-
 (function (w, $) {
   var Slider = function ($target, img_list) {
     var _this = this;
@@ -192,13 +187,6 @@ function isCanvasSupported(){
       $('body').get(0).className = "ready";
     }
   });
-
-  if (isCanvasSupported()) {
-    var bg = new w.Background('background');
-    $('.item').on('mouseenter', function () {
-      bg.react($(this));
-    });
-  }
 
   $(w.document).on('mousemove', 'body.ready', function (e) {
     var x = e.clientX - $(w).width() / 2;
@@ -388,6 +376,12 @@ function isCanvasSupported(){
       email : $('input[name=email]').val(),
       id : $('input[name=id]').val()
     }, restore, 'json');
+  });
+
+  $('.item').on('mouseenter', function () {
+    $('body').attr('hover', $(this).attr('id'));
+  }).on('mouseleave', function () {
+    $('body').attr('hover', '');
   });
 
   w.setInterval(save, 10000);

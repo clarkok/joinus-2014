@@ -11,7 +11,14 @@ html(lang="zh")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     title 求是潮2014秋季纳新
   body
-    canvas#background
+    .background.video
+    .background.hr
+    .background.tech
+    .background.outreach
+    .background.pm
+    .background.photo
+    .background.tide
+    .background.news
 
     #notice
       #notice-context
@@ -20,44 +27,38 @@ html(lang="zh")
       a(href="#joinus").logo
         .logo-img
         .logo-txt JOINUS
-      .item#hr(data-color="#ffea00")
-        a(href="#detail-hr").front
-          .title.two-line
-            span.line 人力资源
-            span.line 部门
-      .item#photo(data-color="#3d4c60")
-        a(href="#detail-photo").front
+      .item#tech(data-from="#f5d9ff", data-to="#a3a3cc")
+        a(href="#detail-tech").front
           .title.one-line
-            span.line 摄影部
-      .item#news(data-color="#5eaf69")
-        a(href="#detail-news").front
-          .title.two-line
-            span.line 新闻资讯
-            span.line 中心
-      .item#video(data-color="#bae0f8")
+            span.line 技术
+      .item#video(data-from="#ffd9ec", data-to="#c2a3cc")
         a(href="#detail-video").front
           .title.one-line
-            span.line 视频团队
-      .item#outreach(data-color="#fcf7d2")
-        a(href="#detail-outreach").front
-          .title.two-line
-            span.line 推广策划
-            span.line 中心
-      .item#tide(data-color="#639aab")
+            span.line 视频
+      .item#photo(data-from="#ffe2d9", data-to="#cca3b8")
+        a(href="#detail-photo").front
+          .title.one-line
+            span.line 摄影
+      .item#news(data-from="#ffffd9", data-to="#ccada3")
+        a(href="#detail-news").front
+          .title.one-line
+            span.line 资讯
+      .item#tide(data-from="#e2ffd9", data-to="#cccca3")
         a(href="#detail-tide").front
-          .title.two-line 
+          .title.one-line 
             span.line 水朝夕
-            span.line 工作室
-      .item#tech(data-color="#ca331b")
-        a(href="#detail-tech").front
-          .title.two-line
-            span.line 技术研发
-            span.line 中心
-      .item#pm(data-color="#fe6100")
+      .item#hr(data-from="#d9ffec", data-to="#adcca3")
+        a(href="#detail-hr").front
+          .title.one-line
+            span.line 人资
+      .item#outreach(data-from="#d9d9ff", data-to="#a3ccb8")
+        a(href="#detail-outreach").front
+          .title.one-line
+            span.line 推广
+      .item#pm(data-from="#d9d9ff", data-to="#a3c2cc")
         a(href="#detail-pm").front
-          .title.two-line
-            span.line 产品运营
-            span.line 部门
+          .title.one-line
+            span.line 产品
 
     .detail-wrapper#detail-hr
       .background-slider

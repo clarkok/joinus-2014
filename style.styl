@@ -52,6 +52,12 @@ transform()
   -moz-transform arguments
   transform arguments
 
+set-linear-gradient(angle, from, to)
+  background-image -webkit-linear-gradient(angle, from, to)
+  background-image -moz-linear-gradient(angle, from, to)
+  background-image -o-linear-gradient(angle, from, to)
+  background-image linear-gradient(angle, from, to)
+
 html, body
   background-color #e7e7e7
   margin 0
@@ -61,12 +67,20 @@ html, body
   min-width 1024px
   overflow hidden
   font-family "Microsoft YaHei UI", "Microsoft YaHei", "Hiragino Sans GB", " WenQuanYi Micro Hei"
+  background-image url(imgs/bg.jpg)
+  background-position 50% 50%
+  background-repeat no-repeat
+  transition background 3s
 
-#background
+.background
+  position absolute
+  top 0
+  left 0
+  z-index 0
   width 100%
   height 100%
-  opacity 1
-  transition opacity .5s
+  opacity 0
+  transition opacity 1s
 
 #notice
   position fixed
@@ -97,7 +111,8 @@ html, body
 $joinus-scale = 0.8
 
 body.joinus
-  #background
+  background-position 60% 50%
+  .background
     opacity 0
   #wrapper
     left 30%
@@ -151,7 +166,7 @@ body.joinus
   text-decoration none
 
   .logo-img
-    background-image url(imgs/logo.png)
+    background-image url(imgs/logo-white.png)
     background-position center
     background-repeat no-repeat
     background-size $logo-size $logo-size
@@ -166,19 +181,13 @@ body.joinus
     text-indent -.5em
     transition all 1s
     opacity 0
-    color black
+    color white
     text-decoration none
   &:hover
     .logo-txt
       text-indent .5em
       letter-spacing .5em
       opacity 1
-
-  &.dark
-    .logo-img
-      background-image url(imgs/logo-white.png)
-    .logo-txt
-      color white
 
 #wrapper
   width 0
@@ -202,22 +211,28 @@ body.joinus
 
   .front
     display block
-    color black
+    color white
     text-decoration none 
     width $item-size
     height $item-size
-    border-radius ($item-size / 2)
-    background-color white
+    border-radius $item-size
+    background-color transparent
+    border-width 3px
+    border-style solid
+    border-color white
     position absolute
     z-index 10
     transition all .5s cubic-bezier(0.165, 0.84, 0.44, 1)
     cursor pointer
+    &:hover
+      background-color white
+
     .title
       width 100%
       span.line
+        font-size 1.5em
         display block
         text-align center
-        font-size 16px
         line-height 16px
         height 16px
       &.one-line
@@ -226,73 +241,105 @@ body.joinus
         padding-top 34px
     .intro
       display none
-  &#hr
+  &#tech
     top - $item-circle-radius * 3
     left 0
-
-  &#photo
-    top - $item-circle-radius * 0.707 * 3
-    left $item-circle-radius * 0.707 * 3
-
-  &#news
-    top 0
-    left $item-circle-radius * 3
+    .front
+      border-color #fdccff
+    .line
+      color #fdccff
 
   &#video
+    top - $item-circle-radius * 0.707 * 3
+    left $item-circle-radius * 0.707 * 3
+    .front
+      border-color #ffccd8
+    .line
+      color #ffccd8
+
+  &#photo
+    top 0
+    left $item-circle-radius * 3
+    .front
+      border-color #ffeecc
+    .line
+      color #ffeecc
+
+  &#news
     top $item-circle-radius * 0.707 * 3
     left $item-circle-radius * 0.707 * 3
-
-  &#outreach
-    top $item-circle-radius * 3
-    left 0
+    .front
+      border-color #e8ffcc
+    .line
+      color #e8ffcc
 
   &#tide
+    top $item-circle-radius * 3
+    left 0
+    .front
+      border-color #ccffd5
+    .line
+      color #ccffd5
+
+  &#hr
     top $item-circle-radius * 0.707 * 3
     left - $item-circle-radius * 0.707 * 3
+    .front
+      border-color #ccfffe
+    .line
+      color #ccfffe
 
-  &#tech
+  &#outreach
     top 0
     left - $item-circle-radius * 3
+    .front
+      border-color #ccdeff
+    .line
+      color #ccdeff
 
   &#pm
     top - $item-circle-radius * 0.707 * 3
     left - $item-circle-radius * 0.707 * 3
+    .front
+      border-color #d7ccff
+    .line
+      color #d7ccff
 
 body.ready
   .item
     opacity 1
 
-    &#hr
+    &#tech
       top - $item-circle-radius
       left 0
       transition-delay 0
 
-    &#photo
+    &#video
       top - $item-circle-radius * 0.707
       left $item-circle-radius * 0.707
       transition-delay .3s
 
-    &#news
+    &#photo
       top 0
       left $item-circle-radius
       transition-delay .6s
 
-    &#video
+    &#news
       top $item-circle-radius * 0.707
       left $item-circle-radius * 0.707
       transition-delay .1s
 
-    &#outreach
+    &#tide
       top $item-circle-radius
       left 0
       transition-delay .4s
 
-    &#tide
+    &#hr
       top $item-circle-radius * 0.707
       left - $item-circle-radius * 0.707
       transition-delay .7s
 
-    &#tech
+    &#outreach
       top 0
       left - $item-circle-radius
       transition-delay .2s
@@ -302,57 +349,168 @@ body.ready
       left - $item-circle-radius * 0.707
       transition-delay .5s
 
-body.hr
-  .item#hr
-    top - $item-circle-radius
-    left 0
-
-body.photo 
-  .item#photo 
-    top - $item-circle-radius * 0.707
-    left $item-circle-radius * 0.707
-
-body.news 
-  .item#news
+body.tech 
+  .item#tech
     top 0
-    left $item-circle-radius
+    left - $item-circle-radius
+
+.background.tech
+  set-linear-gradient(180deg, #f5d9ff, #a3a3cc)
+
+body[hover=tech]
+  .background.tech
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#tech .front
+    span
+      color #a3a3cc
 
 body.video 
   .item#video
     top $item-circle-radius * 0.707
     left $item-circle-radius * 0.707
 
-body.outreach 
-  .item#outreach
-    top $item-circle-radius
-    left 0
+.background.video
+  set-linear-gradient(180deg, #ffd9ec, #c2a3cc)
+
+body[hover=video]
+  .background.video
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#video .front
+    span
+      color #c2a3cc
+
+body.photo 
+  .item#photo 
+    top - $item-circle-radius * 0.707
+    left $item-circle-radius * 0.707
+
+.background.photo
+  set-linear-gradient(180deg, #ffe2d9, #ccada3)
+
+body[hover=photo]
+  .background.photo
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#photo .front
+    span
+      color #cca3b8
+
+body.news 
+  .item#news
+    top 0
+    left $item-circle-radius
+
+.background.news
+  set-linear-gradient(180deg, #ffffd9, #ccada3)
+
+body[hover=news]
+  .background.news
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#news .front
+    span
+      color #ccada3
 
 body.tide 
   .item#tide
     top $item-circle-radius * 0.707
     left - $item-circle-radius * 0.707
 
-body.tech 
-  .item#tech
-    top 0
-    left - $item-circle-radius
+.background.tide
+  set-linear-gradient(180deg, #e2ffd9, #cccca3)
+
+body[hover=tide]
+  .background.tide
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#tide .front
+    span
+      color #cccca3
+
+body.hr
+  .item#hr
+    top - $item-circle-radius
+    left 0
+
+.background.hr
+  set-linear-gradient(180deg, #d9ffec, #adcca3)
+
+body[hover=hr]
+  .background.hr
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#hr .front
+    span
+      color #adcca3
+
+body.outreach 
+  .item#outreach
+    top $item-circle-radius
+    left 0
+
+.background.outreach
+  set-linear-gradient(180deg, #d9f5ff, #a3ccb8)
+
+body[hover=outreach]
+  .background.outreach
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#outreach .front
+    span
+      color #a3ccb8
 
 body.pm 
   .item#pm
     top - $item-circle-radius * 0.707
     left - $item-circle-radius * 0.707
 
+.background.pm
+  set-linear-gradient(180deg, #d9d9ff, #a3c2cc)
+
+body[hover=pm]
+  .background.pm
+    opacity 1
+  #wrapper .item .front
+    border-color white
+    span
+      color white
+  #wrapper .item#pm .front
+    span
+      color #a3c2cc
+
 .detail-wrapper
   position fixed
-  height 0
-  width 100%
+  height 100%
+  width 0
   top 0
   left 0
-  overflow hidden
   background-color transparent
-  transition-property background-color, height
-  transition-delay 0s, 1s
-  transition-duration 1s, 0s
+  transition-property background-color, width
+  transition-delay 0s, .5s
+  transition-duration 1s, 1s
   transition-timing-function cubic-bezier(0.165, 0.84, 0.44, 1)
 
   .background-slider
@@ -377,10 +535,9 @@ body.pm
     width 0
     height 0
     margin-top 0
-    margin-left 0
     border-radius 5000px
     top 50%
-    left -10%
+    right 60%
     background-color white
     transition all 1s ease .2s
 
@@ -460,15 +617,12 @@ body.pm
     transition right .5s cubic-bezier(0.895, 0.03, 0.685, 0.22) 0s
 
   &:target
-    height 100%
-    transition-property background-color, height
-    transition-delay 0s
-    transition-duration 2s, 0s
+    width 100%
+    transition-delay 0s, 0s
     .detail
-      width 100vw
-      height 100vw
-      margin-left -50vw
-      margin-top -50vw
+      width 2000px
+      height 2000px
+      margin-top -1000px
       transition all 1s
       .txt-wrapper, .nav
         transition left .5s cubic-bezier(0.165, 0.84, 0.44, 1) .5s
@@ -478,50 +632,42 @@ body.pm
       transition right .5s cubic-bezier(0.165, 0.84, 0.44, 1) .5s
 
   &#detail-hr
-    &:target
-      background-color #ffea00
+    set-linear-gradient(180deg, #d9ffec, #adcca3)
     .department-logo
       background-image url(imgs/hr.png)
 
   &#detail-photo
-    &:target
-      background-color #3d4c60
+    set-linear-gradient(180deg, #ffe2d9, #ccada3)
     .department-logo
       background-image url(imgs/photo.png)
 
   &#detail-news
-    &:target
-      background-color #5eaf69
+    set-linear-gradient(180deg, #ffffd9, #ccada3)
     .department-logo
       background-image url(imgs/news.png)
 
   &#detail-video
-    &:target
-      background-color #bae0f8
+    set-linear-gradient(180deg, #ffd9ec, #c2a3cc)
     .department-logo
       background-image url(imgs/video.png)
 
   &#detail-outreach
-    &:target
-      background-color #fcf7d2
+    set-linear-gradient(180deg, #d9f5ff, #a3ccb8)
     .department-logo
       background-image url(imgs/outreach.png)
 
   &#detail-tide
-    &:target
-      background-color #639aab
+    set-linear-gradient(180deg, #e2ffd9, #cccca3)
     .department-logo
       background-image url(imgs/tide.png)
 
   &#detail-tech
-    &:target
-      background-color #ca331b
+    set-linear-gradient(180deg, #f5d9ff, #a3a3cc)
     .department-logo
       background-image url(imgs/tech.png)
 
   &#detail-pm
-    &:target
-      background-color #fe6100
+    set-linear-gradient(180deg, #d9d9ff, #a3c2cc)
     .department-logo
       background-image url(imgs/pm.png)
 
