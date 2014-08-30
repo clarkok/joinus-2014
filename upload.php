@@ -16,7 +16,7 @@ function error($text) {
   $con = mysqli_connect($database['host'],$database['username'],$database['password'], $database['database']);
   if (!$con)
     error('Cannot connect to Database');
-  mysqli_set_charset ($con, 'utf-8');
+  mysqli_set_charset ($con, 'utf8');
 
   $query = 'INSERT INTO upload (sid, original_name, file_name) VALUES (?, ?, ?)';
 

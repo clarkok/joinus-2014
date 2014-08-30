@@ -70,7 +70,7 @@ function check_inject()
   $con = mysqli_connect($database['host'], $database['username'], $database['password'], $database['database']);
   if (!$con)
     error('Cannot connect to Database');
-  mysqli_set_charset ($con, 'utf-8');
+  mysqli_set_charset ($con, 'utf8');
 
   check_data($con);
 

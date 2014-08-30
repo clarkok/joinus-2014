@@ -17,7 +17,7 @@ function error($txt)
     $con = mysqli_connect($database['host'], $database['username'], $database['password'], $database['database']);
     if (!$con)
       error('Cannot connect to Database');
-    mysqli_set_charset ($con, 'utf-8');
+    mysqli_set_charset ($con, 'utf8');
 
     $query = 'SELECT * FROM info WHERE name = ? AND email = ? AND sid = ? ORDER BY id DESC LIMIT 1';
 
