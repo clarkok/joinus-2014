@@ -14,7 +14,7 @@ function error($txt)
 
   if (strlen($_POST['name']) * strlen($_POST['email'] * strlen($_POST['id'])))
   {
-    $con = mysqli_connect('localhost', $database['username'], $database['password'], $database['database']);
+    $con = mysqli_connect($database['host'], $database['username'], $database['password'], $database['database']);
     if (!$con)
       error('Cannot connect to Database');
     mysqli_set_charset ($con, 'utf-8');
