@@ -997,6 +997,7 @@ body[hover=pm] #wrapper .item#pm .front span {
   z-index: 25;
   color: #000;
   text-decoration: none;
+  opacity: 0;
 }
 #joinus #joinus-wrapper #joinus-positioner {
   -webkit-box-sizing: border-box;
@@ -1060,6 +1061,9 @@ body[hover=pm] #wrapper .item#pm .front span {
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   transition: all 1s;
+}
+#joinus:target #joinus-wrapper .back {
+  opacity: 1;
 }
 #joinus:target #joinus-wrapper #joinus-positioner {
   -webkit-transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
