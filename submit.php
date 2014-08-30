@@ -67,7 +67,7 @@ function check_inject()
   return false;
 }
 
-  $con = mysqli_connect('localhost', $database['username'], $database['password'], $database['database']);
+  $con = mysqli_connect($database['host'], $database['username'], $database['password'], $database['database']);
   if (!$con)
     error('Cannot connect to Database');
   mysqli_set_charset ($con, 'utf-8');
