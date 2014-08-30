@@ -201,12 +201,8 @@
 
   var notifier = new w.Notifier();
 
-  var callback = function () {
-    var data;
-    if (arguments.length == 3)
-      data = arguments[2];
-    else
-      data = arguments[1].result;
+  var callback = function (data) {
+    console.log(data);
     if (data.code == 1)
       notifier.notice('提交失败，请稍后重试', true);
     else if (data.code == 2) {
@@ -283,34 +279,24 @@
     if (data) {
       if (0 >= $('input[name=name]').val().length)
         $('input[name=name]').val(data.name).blur();
-      console.log(data.name);
       if (0 >= $('input[name=id]').val().length)
         $('input[name=id]').val(data.id).blur();
-      console.log(name.id);
       if (0 >= $('input[name=email]').val().length)
         $('input[name=email]').val(data.email).blur();
-      console.log(data.email);
       if (0 >= $('input[name=long]').val().length)
         $('input[name=long]').val(data.long_num).blur();
-      console.log(data.long_num);
       if (0 >= $('input[name=short]').val().length)
         $('input[name=short]').val(data.short_num).blur();
-      console.log(data.short_num);
       if (0 >= $('input[name=grade]').val().length)
         $('input[name=grade]').val(data.grade).blur();
-      console.log('grade');
       if (0 >= $('input[name=class]').val().length)
         $('input[name=class]').val(data.class).blur();
-      console.log('class');
       if (0 >= $('#self-intro').val().length)
         $('#self-intro').val(data.question1).blur();
-      console.log('q1');
       if (0 >= $('#question1').val().length)
         $('#question1').val(data.question2).blur();
-      console.log('q2');
       if (0 >= $('#question2').val().length)
         $('#question2').val(data.question3).blur();
-      console.log('q3');
       var $parent;
       if (0 == $('input[name=gender]').val() && (data.gender)) {
         $('input[name=gender]').val(data.gender);

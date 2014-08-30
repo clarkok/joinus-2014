@@ -975,7 +975,7 @@ body[hover=pm] #wrapper .item#pm .front span {
   display: block;
   position: absolute;
   top: 50%;
-  right: -10%;
+  left: 60%;
   width: 0;
   height: 0;
   margin-top: 0;
@@ -1052,11 +1052,10 @@ body[hover=pm] #wrapper .item#pm .front span {
   transition: height 0s ease 0s;
 }
 #joinus:target #joinus-wrapper {
-  width: 100vw;
-  height: 100vw;
-  margin-right: -50vw;
-  margin-top: -50vw;
-  border-radius: 50vw;
+  width: 2000px;
+  height: 2000px;
+  margin-top: -1000px;
+  border-radius: 5000px;
   background-color: #fff;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
