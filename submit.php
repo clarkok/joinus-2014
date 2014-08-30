@@ -83,9 +83,8 @@ function check_inject()
 
   if ($stmt->prepare($query))
   {
-    $zero = 0;
-    $one = 1;
-    $stmt->bind_param('sisssiissssssssiii', $_POST['name'], $_POST['gender'], $_POST['long'], $_POST['short'], $_POST['email'], $_POST['first-chose'], $_POST['second-chose'], $_POST['id'], $_POST['grade'], $_POST['class'], $_POST['question1'], $_POST['question2'], $_POST['question3'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR'], $_POST['fill-duration'], $_POST['view-duration'], $inject ? $one : $zero);
+    $inject = $inject ? 1 : 0;
+    $stmt->bind_param('sisssiissssssssiii', $_POST['name'], $_POST['gender'], $_POST['long'], $_POST['short'], $_POST['email'], $_POST['first-chose'], $_POST['second-chose'], $_POST['id'], $_POST['grade'], $_POST['class'], $_POST['question1'], $_POST['question2'], $_POST['question3'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR'], $_POST['fill-duration'], $_POST['view-duration'], $inject);
     $stmt->execute();
     $stmt->close();
   }
