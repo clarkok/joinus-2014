@@ -78,12 +78,17 @@
         backgroundPosition: (animator.from.x + 'px') + ' ' + (animator.from.y + 'px')
       });
 
-      _this.target.removeClass('hide');
-      _this.target.css({
-        opacity: 1,
-        backgroundSize: (animator.to.width + 'px') + ' ' + (animator.to.height + 'px'),
-        backgroundPosition: (animator.to.x + 'px') + ' ' + (animator.to.y + 'px')
-      });
+      w.setTimeout(function () {
+        _this.target.removeClass('hide');
+
+        w.setTimeout(function () {
+          _this.target.css({
+            opacity: 1,
+            backgroundSize: (animator.to.width + 'px') + ' ' + (animator.to.height + 'px'),
+            backgroundPosition: (animator.to.x + 'px') + ' ' + (animator.to.y + 'px')
+          });
+        }, 500);
+      }, 500);
     }, 500);
   };
 
@@ -156,6 +161,54 @@
   w.Notifier = Notifier;
 })(window, window.jQuery);
 
+var img_lists = {
+  'hr' : [
+    'imgs/hr/1.jpg',
+    'imgs/hr/2.jpg',
+    'imgs/hr/3.jpg',
+    'imgs/hr/4.jpg'
+  ],
+  'news' : [
+    'imgs/news/1.jpg',
+    'imgs/news/2.jpg',
+    'imgs/news/3.jpg',
+    'imgs/news/4.JPG'
+  ],
+  'outreach' : [
+    'imgs/outreach/1.jpg',
+    'imgs/outreach/2.jpg',
+    'imgs/outreach/3.jpg',
+    'imgs/outreach/4.jpg'
+  ],
+  'photo' : [
+    'imgs/photo/1.jpg',
+    'imgs/photo/2.jpg',
+    'imgs/photo/3.jpg'
+  ],
+  'pm' : [
+    'imgs/pm/1.png',
+    'imgs/pm/2.jpg',
+    'imgs/pm/3.jpg',
+    'imgs/pm/4.gif'
+  ],
+  'tech' : [
+    'imgs/tech/1.jpg',
+    'imgs/tech/2.jpg',
+    'imgs/tech/3.jpg',
+    'imgs/tech/4.jpg',
+    'imgs/tech/5.jpg'
+  ],
+  'tide' : [
+    'imgs/tide/1.png',
+    'imgs/tide/2.jpg',
+    'imgs/tide/3.jpg'
+  ],
+  'video' : [
+    'imgs/video/1.JPG',
+    'imgs/video/2.JPG'
+  ]
+};
+
 (function (w, $) {
   var view_start = new Date();
   var fill_start = new Date();
@@ -181,7 +234,7 @@
     else
     if (hash.length && (hash != '#')) {
       $('body').get(0).className = hash.substring(8);
-      slider = new w.Slider($(hash).find('.background-slider'), ['imgs/test1.jpg']);
+      slider = new w.Slider($(hash).find('.background-slider'), img_lists[hash.substring(8)]);
     }
     else {
       $('body').get(0).className = "ready";

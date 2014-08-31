@@ -357,14 +357,12 @@ body.tech .item#tech {
   background-image: -o-linear-gradient(180deg, #f5d9ff, #a3a3cc);
   background-image: linear-gradient(180deg, #f5d9ff, #a3a3cc);
 }
-body[hover=tech] .background.tech {
-  opacity: 1;
-}
 body[hover=tech] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
-body[hover=tech] #wrapper .item .front span {
-  color: #fff;
+body[hover=tech] #wrapper .item#tech .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=tech] #wrapper .item#tech .front span {
   color: #a3a3cc;
@@ -379,14 +377,12 @@ body.video .item#video {
   background-image: -o-linear-gradient(180deg, #ffd9ec, #c2a3cc);
   background-image: linear-gradient(180deg, #ffd9ec, #c2a3cc);
 }
-body[hover=video] .background.video {
-  opacity: 1;
-}
 body[hover=video] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
-body[hover=video] #wrapper .item .front span {
-  color: #fff;
+body[hover=video] #wrapper .item#video .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=video] #wrapper .item#video .front span {
   color: #c2a3cc;
@@ -401,14 +397,12 @@ body.photo .item#photo {
   background-image: -o-linear-gradient(180deg, #ffe2d9, #ccada3);
   background-image: linear-gradient(180deg, #ffe2d9, #ccada3);
 }
-body[hover=photo] .background.photo {
-  opacity: 1;
-}
 body[hover=photo] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
-body[hover=photo] #wrapper .item .front span {
-  color: #fff;
+body[hover=photo] #wrapper .item#photo .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=photo] #wrapper .item#photo .front span {
   color: #cca3b8;
@@ -423,14 +417,12 @@ body.news .item#news {
   background-image: -o-linear-gradient(180deg, #ffffd9, #ccada3);
   background-image: linear-gradient(180deg, #ffffd9, #ccada3);
 }
-body[hover=news] .background.news {
-  opacity: 1;
-}
 body[hover=news] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
-body[hover=news] #wrapper .item .front span {
-  color: #fff;
+body[hover=news] #wrapper .item#news .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=news] #wrapper .item#news .front span {
   color: #ccada3;
@@ -445,14 +437,15 @@ body.tide .item#tide {
   background-image: -o-linear-gradient(180deg, #e2ffd9, #cccca3);
   background-image: linear-gradient(180deg, #e2ffd9, #cccca3);
 }
-body[hover=tide] .background.tide {
-  opacity: 1;
-}
 body[hover=tide] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
 body[hover=tide] #wrapper .item .front span {
   color: #fff;
+}
+body[hover=tide] #wrapper .item#tide .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=tide] #wrapper .item#tide .front span {
   color: #cccca3;
@@ -467,14 +460,12 @@ body.hr .item#hr {
   background-image: -o-linear-gradient(180deg, #d9ffec, #adcca3);
   background-image: linear-gradient(180deg, #d9ffec, #adcca3);
 }
-body[hover=hr] .background.hr {
-  opacity: 1;
-}
 body[hover=hr] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
-body[hover=hr] #wrapper .item .front span {
-  color: #fff;
+body[hover=hr] #wrapper .item#hr .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=hr] #wrapper .item#hr .front span {
   color: #adcca3;
@@ -489,14 +480,12 @@ body.outreach .item#outreach {
   background-image: -o-linear-gradient(180deg, #d9f5ff, #a3ccb8);
   background-image: linear-gradient(180deg, #d9f5ff, #a3ccb8);
 }
-body[hover=outreach] .background.outreach {
-  opacity: 1;
-}
 body[hover=outreach] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
-body[hover=outreach] #wrapper .item .front span {
-  color: #fff;
+body[hover=outreach] #wrapper .item#outreach .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=outreach] #wrapper .item#outreach .front span {
   color: #a3ccb8;
@@ -511,14 +500,12 @@ body.pm .item#pm {
   background-image: -o-linear-gradient(180deg, #d9d9ff, #a3c2cc);
   background-image: linear-gradient(180deg, #d9d9ff, #a3c2cc);
 }
-body[hover=pm] .background.pm {
-  opacity: 1;
-}
 body[hover=pm] #wrapper .item .front {
-  border-color: #fff;
+  opacity: 0.5;
 }
-body[hover=pm] #wrapper .item .front span {
-  color: #fff;
+body[hover=pm] #wrapper .item#pm .front {
+  opacity: 1;
+  border-color: #fff;
 }
 body[hover=pm] #wrapper .item#pm .front span {
   color: #a3c2cc;
@@ -564,9 +551,9 @@ body[hover=pm] #wrapper .item#pm .front span {
 }
 .detail-wrapper .background-slider.hide {
   display: none;
-  -webkit-transition-duration: 0;
-  -moz-transition-duration: 0;
-  transition-duration: 0;
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  transition-duration: 0s;
 }
 .detail-wrapper .detail {
   position: absolute;
