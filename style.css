@@ -62,7 +62,7 @@ body.joinus .background {
   opacity: 0;
 }
 body.joinus #wrapper {
-  left: 30%;
+  left: 20%;
 }
 body.joinus .item {
   opacity: 1;
@@ -442,9 +442,6 @@ body.tide .item#tide {
 }
 body[hover=tide] #wrapper .item .front {
   opacity: 0.5;
-}
-body[hover=tide] #wrapper .item .front span {
-  color: #fff;
 }
 body[hover=tide] #wrapper .item#tide .front {
   opacity: 1;
@@ -966,7 +963,7 @@ body[hover=pm] #wrapper .item#pm .front span {
   display: block;
   position: absolute;
   top: 50%;
-  left: 60%;
+  left: 40%;
   width: 0;
   height: 0;
   margin-top: 0;
@@ -998,7 +995,7 @@ body[hover=pm] #wrapper .item#pm .front span {
   position: fixed;
   height: 100%;
   line-height: 100vh;
-  width: 30%;
+  width: 45%;
   min-width: 24em;
   right: -100%;
   top: 0;
