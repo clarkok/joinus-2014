@@ -27,7 +27,7 @@
       timeout = true;
       if (loaded)
         callback.call(w, img);
-    }, 4000);
+    }, 6000);
 
     img.onload = function () {
       loaded = true;

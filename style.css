@@ -541,12 +541,12 @@ body[hover=pm] #wrapper .item#pm .front span {
   -webkit-transition-property: opacity, background-position, background-size;
   -moz-transition-property: opacity, background-position, background-size;
   transition-property: opacity, background-position, background-size;
-  -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-  -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-  -webkit-transition-duration: 0.5s, 4s, 4s;
-  -moz-transition-duration: 0.5s, 4s, 4s;
-  transition-duration: 0.5s, 4s, 4s;
+  -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1), ease, ease;
+  -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1), ease, ease;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1), ease, ease;
+  -webkit-transition-duration: 0.5s, 6s, 6s;
+  -moz-transition-duration: 0.5s, 6s, 6s;
+  transition-duration: 0.5s, 6s, 6s;
   opacity: 0;
 }
 .detail-wrapper .background-slider.hide {
