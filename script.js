@@ -199,7 +199,7 @@ var img_lists = {
     'imgs/tech/5.jpg'
   ],
   'tide' : [
-    'imgs/tide/1.png',
+    'imgs/tide/1.jpg',
     'imgs/tide/2.jpg',
     'imgs/tide/3.jpg'
   ],
