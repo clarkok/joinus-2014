@@ -907,6 +907,11 @@ body[hover=pm] #wrapper .item#pm .front span {
 #joinus .line .input.input-file .prompt {
   width: 100%;
 }
+#joinus .line .input.input-file .note {
+  color: #808080;
+  font-size: 0.8em;
+  text-indent: 2em;
+}
 #joinus .line .input.input-file .button {
   display: inline-block;
   float: right;
