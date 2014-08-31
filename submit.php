@@ -36,10 +36,10 @@ function check_data($con)
   if (strlen($p['email']) <= 0)
     array_push($error_list, 'email');
   $first_chose = intval($p['first-chose']);
-  if ($first_chose > 9 || 0 > $first_chose)
+  if ($first_chose > 10 || 0 > $first_chose)
     array_push($error_list, 'first-chose');
   $second_chose = intval($p['second-chose']);
-  if ($second_chose > 9 || 0 > $second_chose)
+  if ($second_chose > 10 || 0 > $second_chose)
     array_push($error_list, 'second-chose');
   if (strlen($p['id']) <= 0)
     array_push($error_list, 'id');
