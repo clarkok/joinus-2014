@@ -204,8 +204,13 @@ var img_lists = {
     'imgs/tide/3.jpg'
   ],
   'video' : [
-    'imgs/video/1.JPG',
-    'imgs/video/2.JPG'
+    'imgs/video/1.jpg',
+    'imgs/video/2.jpg',
+    'imgs/video/3.jpg',
+    'imgs/video/4.jpg',
+    'imgs/video/5.jpg',
+    'imgs/video/6.jpg',
+    'imgs/video/7.jpg'
   ]
 };
 
