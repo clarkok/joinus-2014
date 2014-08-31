@@ -188,6 +188,9 @@ body.joinus .item#pm {
 }
 .item .front:hover {
   background-color: #fff;
+  -webkit-box-shadow: 0 0 1em #fff;
+  -moz-box-shadow: 0 0 1em #fff;
+  box-shadow: 0 0 1em #fff;
 }
 .item .front .title {
   width: 100%;
