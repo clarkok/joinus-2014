@@ -9,10 +9,10 @@
     this.current = 0;
 
     var next = function () {
-      if (++this.current >= this.img_list.length) {
-        this.current = 0;
+      if (++_this.current >= _this.img_list.length) {
+        _this.current = 0;
       }
-      var ind = this.current;
+      var ind = _this.current;
       _this.prepare(img_list[ind], function (img) {
         _this.replaceImg(img_list[ind], _this.calcAnimation(img));
         next();
