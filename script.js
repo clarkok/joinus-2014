@@ -6,9 +6,13 @@
     this.target = $target;
     this.img_list = img_list;
     this.r = 0;
+    this.current = 0;
 
     var next = function () {
-      var ind = w.Math.floor(w.Math.random() * _this.img_list.length);
+      if (++this.current >= this.img_list.length) {
+        this.current = 0;
+      }
+      var ind = this.current;
       _this.prepare(img_list[ind], function (img) {
         _this.replaceImg(img_list[ind], _this.calcAnimation(img));
         next();
