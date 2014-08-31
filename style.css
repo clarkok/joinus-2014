@@ -927,6 +927,9 @@ body[hover=pm] #wrapper .item#pm .front span {
   list-style: disc outside none;
   padding-left: 2em;
 }
+#joinus .line .input.input-file #list .list-item {
+  white-space: no-wrap;
+}
 #joinus .line .input.input-file #list .list-item:hover {
   background-color: #fdd;
 }

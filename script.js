@@ -322,7 +322,10 @@ var img_lists = {
       }
     },
     done : function (e, data) {
-      data.list_item_jquery.css('color', 'black');
+      data.list_item_jquery.css({
+        'color': 'black',
+        'backgroundColor' : 'white'
+      });
     },
     progress : function (e, data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
