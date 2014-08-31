@@ -306,18 +306,29 @@ var img_lists = {
           alert('每个文件最大15M，更大可以传网盘嗷');
         }
         $('#list').append(
-          $('<li />').addClass('list-item').text(data.files[0].name)
+          data.list_item_jquery = $('<li />').addClass('list-item').text(data.files[0].name).css({
+            'color' : 'grey',
+            'backgroundColor' : '#efe',
+            'width' : 0
+          })
         );
         data.process().done(function () {
           data.submit();
         });
       }
       else {
-        alert('ID first');
+        alert('请先填写学号');
         return false;
       }
     },
-    done : function () {
+    done : function (e, data) {
+      data.list_item_jquery.css('color', 'black');
+    },
+    progress : function (e, data) {
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+      data.list_item_jquery.css({
+        'width' : progress + '%'
+      });
     }
   }).bind('fileuploadsubmit', function (e, data) {
     if ($('input[name=id]').val().length) {
