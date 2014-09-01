@@ -772,6 +772,7 @@ body[hover=pm] #wrapper .item#pm .front span {
 #joinus .line.note {
   font-size: 0.8em;
   color: #808080;
+  line-height: 1.5em;
 }
 #joinus .line .input {
   margin-bottom: 1em;
