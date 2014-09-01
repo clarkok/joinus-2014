@@ -26,7 +26,7 @@ function check_data($con)
 
   $p = $_REQUEST;
 
-  if (strlen($p['name']) > 10 || strlen($p['name']) < 2)
+  if (strlen($p['name']) <= 0)
     array_push($error_list, 'name');
   $gender = intval($p['gender']);
   if ($gender > 3 || $gender < 0)
