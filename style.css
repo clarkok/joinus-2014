@@ -136,8 +136,8 @@ body.joinus .item#pm {
   text-decoration: none;
 }
 .logo:hover .logo-txt {
-  text-indent: 0.5em;
-  letter-spacing: 0.5em;
+  text-indent: 1em;
+  letter-spacing: 1em;
   opacity: 1;
 }
 #wrapper {
@@ -753,6 +753,15 @@ body[hover=pm] #wrapper .item#pm .front span {
 }
 .detail-wrapper#detail-pm .department-logo {
   background-image: url("imgs/pm.png");
+}
+.detail-wrapper#detail-qsc {
+  background-image: url("imgs/bg.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.detail-wrapper#detail-qsc .department-logo {
+  background-image: url("imgs/logo-white.png");
 }
 #joinus .line {
   display: block;
