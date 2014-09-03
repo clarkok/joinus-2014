@@ -1,6 +1,7 @@
 *.swp
 m
 database.php
+user_auth.php
 
 upload/*
 !upload/index.html
