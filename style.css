@@ -908,7 +908,7 @@ body[hover=pm] #wrapper .item#pm .front span {
   border-left-color: transparent;
   border-right-color: transparent;
   padding: 0.5em;
-  min-height: 5em;
+  min-height: 8em;
 }
 #joinus .line .input.input-file {
   width: 100%;
