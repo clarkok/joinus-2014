@@ -169,7 +169,6 @@ var img_lists = {
   'hr' : [
     'imgs/hr/1.jpg',
     'imgs/hr/2.jpg',
-    'imgs/hr/3.jpg',
     'imgs/hr/4.jpg'
   ],
   'news' : [

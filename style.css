@@ -15,6 +15,45 @@ body {
   -moz-transition: background 3s;
   transition: background 3s;
 }
+#timeline-positioner {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 300px;
+  line-height: 100vh;
+  text-align: right;
+}
+#timeline-positioner #timeline {
+  line-height: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #aaa;
+}
+#timeline-positioner #timeline li {
+  margin-top: 2em;
+  padding-top: 0.3em;
+  width: 250px;
+  border-top: 1px solid #fff;
+}
+#timeline-positioner #timeline li:after {
+  content: " ";
+  display: block;
+  height: 0px;
+  clear: both;
+}
+#timeline-positioner #timeline li .time {
+  float: left;
+}
+#timeline-positioner #timeline li .info {
+  float: right;
+}
+#timeline-positioner #timeline li .info p {
+  margin-top: 0;
+}
 .background {
   position: absolute;
   top: 0;
