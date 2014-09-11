@@ -930,6 +930,7 @@ body[hover=pm] #wrapper .item#pm .front span {
   width: 100%;
 }
 #joinus .line .input.input-textarea .prompt {
+  display: block;
   width: 100%;
 }
 #joinus .line .input.input-textarea textarea {
