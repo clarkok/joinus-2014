@@ -408,7 +408,7 @@ var img_lists = {
       second_chose : $('input[name=second-chose]').val(),
       question1 : $('#self-intro').val(),
       question2 : $('#question1').val(),
-      question3 : $('#questino2').val()
+      question3 : $('#question2').val()
     };
 
     w.localStorage.form_data = JSON.stringify(res);
